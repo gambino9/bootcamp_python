@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/04 15:29:57 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/07 15:29:32 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/02/07 17:00:11 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,11 @@ import sys
 # class InputError(Error):
 # 	"""Exception raised for errors in the input
 # 	"""
-	
+
+#	Proposition d'amelioration:
+#
+#	Utiliser des classes (ou autre) pour automatiser les cas d'erreurs	
+#	Executer la fonction autrement qu'en l'appelant en fin de fichier ?
 
 def	operations():
 	if len(sys.argv) < 3:
@@ -37,7 +41,5 @@ def	operations():
 			print("Remainder 	: ERROR (div by zero)")
 	elif len(sys.argv) > 3:
 		print("InputError : Too many arguments\n\nUsage : python operation.py\nExample :\n\tpython operations.py 10 3")
-	# else:
-		# print("InputError : only number")
 
 operations()
