@@ -1,24 +1,28 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    kata01.py                                          :+:      :+:    :+:    #
+#    filterwords.py                                     :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/02/07 18:05:50 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/11 18:20:35 by lboukrou         ###   ########.fr        #
+#    Created: 2020/02/13 19:31:24 by lboukrou          #+#    #+#              #
+#    Updated: 2020/02/13 20:11:44 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Introduction to dictionnaries in Python
-# https://www.w3schools.com/python/python_dictionaries.asp
-# A simple exercice to print keys and keys's values
+#	Discovering list comprehensions
 
-languages = {
-	'Python': 'Guido van Rossum',
-	'Ruby': 'Yukihiro Matsumoto',
-	'PHP': 'Rasmus Lerdorf',
-}
+a = [1,4,2,7,1,9,0,3,4,6,6,6,8,3]
+c = "Bonjour les amis, ca va ou quoi ?"
+b = []
+d = []
+n = 4
 
-for i in languages:
-	print(i,"was created by",languages[i])
+for word in c.split():
+	if len(word) < n:
+		continue
+	else:
+		d
+
+# print(b)
+print(d)
