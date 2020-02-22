@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 16:26:09 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/18 17:07:51 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/02/18 17:08:42 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 #	Use of random/randint to generate random int
 #	Proposed improvements : 
 #	- Make small functions for each case
+#	- Do some of the proposed bonuses
 
 from random import randint
 
