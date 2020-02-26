@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/11 17:34:28 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/13 19:31:20 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/02/26 17:33:56 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ cookbook = {
 	{
 		'ingredients':
 		{
-			'avodado',
+			'avocado',
 			'arugula',
 			'tomatoes',
 			'spinach'
