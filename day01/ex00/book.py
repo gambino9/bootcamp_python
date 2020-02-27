@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 21:47:45 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/26 21:10:31 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/02/27 20:36:40 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,17 @@ class Book:
 	# 	"""Print a recipe with the name 'name' and return the instance """
 	# 	return (self.recipes_list.get(name))
 
-	def add_recipe(self, recipe):
+	def add_recipe(self, recipe_type, recipe):
 		"""Add a recipe to the book and update last_update """
-		self.recipes_list.setdefault(recipe.recipe_type, []).append(recipe)
+		# self.recipes_list.update({recipe.recipe_type:recipe})
+		recettes = self.recipes_list.get(recipe_type)
+		lst = []
+		for i in recettes:
+			lst.append(i)
+		lst.append(recipe)
+		self.recipes_list.update({recipe_type:lst})
+		# type_to_apprend = self.recipes_list.get(recipe_type)
+		# for i in type_to_apprend:
+		# 	type_to_apprend.append(recipe)
+		# self.recipes_list[recipe_type].append(recipe)
 		# pass
