@@ -6,12 +6,11 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/18 17:55:11 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/27 20:38:08 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/02/28 19:29:36 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import datetime
-
 from book import Book
 from recipe import Recipe
 
@@ -46,23 +45,26 @@ cookbook = {
 	}
 }
 
-last_up = datetime.datetime.today()
-crea_date = datetime.datetime.today()
-print(last_up)
-print(crea_date)
-# print(type(last_up))
+last_up = datetime.datetime.strptime('2020-02-08', "%Y-%m-%d")
+crea_date = datetime.datetime.strptime('2020-03-09', "%Y-%m-%d")
 livre = Book("livre de recettes", last_up, crea_date, cookbook)
+print(livre.last_update)
+print(crea_date)
 recipes_by_type = livre.get_recipes_by_type("starter")
 print(recipes_by_type)
 
 # Example of how to use add_recipe method
 # print(cookbook)
-new_recipe_to_add = livre.add_recipe('lunch', ratatouille)
-new_recipe_to_add_2 = livre.add_recipe('lunch', sandwich)
+mon_cul = []
+new_recipe_to_add = livre.add_recipe(ratatouille)
+new_recipe_to_add_2 = livre.add_recipe(sandwich)
+print(livre.last_update)
+
 # new_recipe_to_add_3 = livre.add_recipe(tarte_citron)
 for i in cookbook['lunch']:
 	print(i.name)
 print(cookbook)
+nam_recipe_to_print = livre.get_recipe_by_name(veloute)
 
 # recipe_by_name = livre.get_recipe_by_name("")
 # types = get_recipes_by_type(starter)

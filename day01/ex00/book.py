@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 21:47:45 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/27 20:36:40 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/02/28 19:33:24 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,21 +45,35 @@ class Book:
 			names.append(i.name)
 		return (names)
 
-	# def get_recipe_by_name(self, name):
-	# 	"""Print a recipe with the name 'name' and return the instance """
-	# 	return (self.recipes_list.get(name))
 
-	def add_recipe(self, recipe_type, recipe):
+	def add_recipe(self, recipe):
 		"""Add a recipe to the book and update last_update """
-		# self.recipes_list.update({recipe.recipe_type:recipe})
-		recettes = self.recipes_list.get(recipe_type)
-		lst = []
-		for i in recettes:
-			lst.append(i)
-		lst.append(recipe)
-		self.recipes_list.update({recipe_type:lst})
-		# type_to_apprend = self.recipes_list.get(recipe_type)
-		# for i in type_to_apprend:
-		# 	type_to_apprend.append(recipe)
-		# self.recipes_list[recipe_type].append(recipe)
-		# pass
+		try:
+			recettes = self.recipes_list.get(recipe.recipe_type)
+			lst = []
+			for i in recettes:
+				lst.append(i)
+			lst.append(recipe)
+			self.recipes_list.update({recipe.recipe_type:lst})
+			""" updating last_update of object"""
+			self.last_update = datetime.datetime.today()
+		except AttributeError:
+			print("Argument passed must be a Recipe type object")
+		pass
+
+	# This one is not finished yet, search about return instance
+	def get_recipe_by_name(self, name):
+		"""Print a recipe with the name 'name' and return the instance """
+		print("allez")
+		# key_recipe = self.recipes_list.get(name)
+		for j in self.recipes_list.keys():
+			# for j in i:
+				if j == name:
+					print(j)
+				# else:
+					# pass
+		print("fait ierch")
+		# name_to = key_recipe
+		# print(key_recipe)
+		# print(self.recipes_list.get('starter'))
+		# return (self.recipes_list.get(name))
