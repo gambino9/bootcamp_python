@@ -6,17 +6,17 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/18 17:58:24 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/26 19:09:20 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/02/29 18:26:43 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #	Discovering how to create a class
 
 #	Possible Improvements :
-#	- Defining specific methods to handle the parsing 
+#	- Defining specific methods to handle the parsing
 
 class Recipe:										#	Defining 'Recipe' class
-	def __init__(self, name, cooking_lvl, cooking_time, ingredients, description, recipe_type):		#	Method called when creating an object
+	def __init__(self, name, cooking_lvl, cooking_time, ingredients, description, recipe_type):	#	Method called when creating an object
 		self.name = name							#	Attribute of class Recipe. This one stocks name for ex
 		self.cooking_lvl = cooking_lvl
 		self.cooking_time = cooking_time
@@ -55,19 +55,8 @@ class Recipe:										#	Defining 'Recipe' class
 			exit() 
 	
 	#	Defining a str method to print properly all information about a recipe
-	
 	def __str__(self):
 		"""Return the string to print with the recipe info"""
 		text = "The name of this recipe is {}, on a difficulty cooking scale up to five, it is a {}.\nIt takes {} minutes to cook.\nIt has the following ingredients : {}.\nHere is a quick description : {}.\nThis recipe is a {}.\nBon appetit !".format(self.name, self.cooking_lvl, self.cooking_time, self.ingredients, self.description, self.recipe_type)
 		return text
 		
-	
-	# def check_value(self):
-	# 	if type(self.name) != str or len(self.name) == 0:
-	# 		print("Error bad type for name")
-	# 		exit()
-	# 	if type(self.cooking_lvl) != int or self.cooking_lvl > 0 and self.cooking_lvl < 6:
-	# 		print("Error bad type for cooking lvl")
-	# 		exit()
-	
-# check_value(self)

@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 21:47:45 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/28 19:33:24 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/02/29 19:31:37 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ class Book:
 					print(j)
 				# else:
 					# pass
-		print("fait ierch")
+		print("Hey")
 		# name_to = key_recipe
 		# print(key_recipe)
 		# print(self.recipes_list.get('starter'))
