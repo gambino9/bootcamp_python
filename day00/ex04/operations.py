@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/04 15:29:57 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/07 17:00:11 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/03/04 17:33:56 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ import sys
 
 #	Proposition d'amelioration:
 #
-#	Utiliser des classes (ou autre) pour automatiser les cas d'erreurs	
-#	Executer la fonction autrement qu'en l'appelant en fin de fichier ?
+#	Utiliser des méthodes (ou autre) pour automatiser les cas d'erreurs	
+#	Executer la fonction autrement ?
 
 def	operations():
 	if len(sys.argv) < 3:
