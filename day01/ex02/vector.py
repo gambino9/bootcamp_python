@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/01 19:02:39 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/04 21:19:36 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/03/05 18:45:49 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -139,6 +139,10 @@ class Vector:
 			return (new_vec)
 
 	def __str__(self, other):
+		""" 
+		Link explaining in detail str and repr methods : 
+		https://stackoverflow.com/questions/1436703/difference-between-str-and-repr/2626364#2626364
+		""" 
 		pass
 
 	def __repr__(self, other):
