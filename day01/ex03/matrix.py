@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 15:23:06 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/11 12:37:19 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/03/11 12:54:57 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ class Matrix:
 				if (len(data[0]) != 2):
 					print("Shape must contains 2 elements")
 					exit()
-				self.shape = data
+				self.shape = data[0]
 				num_list = self.shape[0]
 				num_elem = self.shape[1]
 				print(num_list)
@@ -52,7 +52,7 @@ class Matrix:
 				for i in range (num_list):
 					col = []
 					for j in range (num_elem):
-						col.append()
+						col.append(0.0)
 					self.data.append(col)
 		# """ 3 """
 		elif len(data) == 2:
