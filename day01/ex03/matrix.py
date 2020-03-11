@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 15:23:06 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/10 22:03:36 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/03/11 12:37:19 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,37 +24,50 @@
 
 class Matrix:
 	def __init__ (self, *data):
+		# """ 1 """
 		if len(data) == 1:
-		""" 1 """
-			if type(data) == list:
-				length = len(data[0])
-				for i in data:
+			if type(data[0]) == list:
+				length = len(data[0][0])
+				for i in data[0]:
 					if type(i) != list:
 						print("data must only contain lists")
 						exit()
 					if len(i) != length:
 						print("data's lists must be of same length")
 						exit()
-				self.data = data
-				self.shape = ()
-				self.shape(0) = len(self.data)
-				self.shape(1) = length
-		""" 2 """ 
-			elif type(data) == tuple:
-				if (len(data) != 2):
+				self.data = data[0]
+				self.shape = (len(self.data), length)
+				# self.shape[0] = len(self.data[0])
+				# self.shape[1] = length
+		# """ 2 """ 
+			elif type(data[0]) == tuple:
+				if (len(data[0]) != 2):
 					print("Shape must contains 2 elements")
 					exit()
 				self.shape = data
 				num_list = self.shape[0]
 				num_elem = self.shape[1]
+				print(num_list)
 				self.data = []
-				for i in range num_list:
+				for i in range (num_list):
 					col = []
-					for j in range num_elem:
+					for j in range (num_elem):
 						col.append()
 					self.data.append(col)
-		""" 3 """
+		# """ 3 """
 		elif len(data) == 2:
+			if type(data[0]) == list and type(data[1]) == tuple:
+				self.data = data[0]
+				self.shape = data[1]
+			else:
+				print("Wrong type of elements")
+				exit()
+		elif len(data) == 0:
+			print("Please enter arguments")
+			exit()
+		else:
+			print("Wrong number of arguments")
+			exit()
 
 					
 

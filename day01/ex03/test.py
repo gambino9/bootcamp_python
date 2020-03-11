@@ -6,9 +6,11 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 16:46:44 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/10 21:22:29 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/03/11 12:39:09 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+from matrix import Matrix
 
 liste = ([[0.0, 1.0, 2.0], [3.0, 4.0, 5.0]])
 print(type(liste))
@@ -22,6 +24,7 @@ for i in range (num_list):
 		col.append(0.0)
 	data.append(col)
 print(data)
+print("------")
 # for i in liste:
 # 	print(type(i))
 # print(len(liste))
@@ -37,3 +40,8 @@ print(data)
 # lolo = [[]]
 # print(type(lolo))
 # print(len(lolo))
+
+m1 = Matrix([[0.0, 1.0, 2.0], [3.0, 4.0, 5.0], [6.0, 7.0, 8.0], [9.0, 10.0, 11.0]])
+print(m1.shape)
+print(m1.data)
+# m2 = Matrix()
