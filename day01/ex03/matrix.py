@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 15:23:06 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/11 12:54:57 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/03/11 13:07:24 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,10 @@
 # 	2 - a shape Matrix((3, 3))-> the matrix will be filled by default with zeroes
 # 	3 - the expected elements and shape : Matrix([[0.0, 1.0, 2.0], [3.0, 4.0, 5.0], 
 # [6.0, 7.0, 8.0]],(3, 3))
+
+# Possible improvements : 
+# - Overload some operators
+# - Tests some error case (2 first arg -> tuples)
 
 class Matrix:
 	def __init__ (self, *data):

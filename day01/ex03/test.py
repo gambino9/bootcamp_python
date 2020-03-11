@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 16:46:44 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/11 12:59:35 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/03/11 13:04:48 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,4 +55,6 @@ print("3d initialization")
 m3 = Matrix([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]], (3, 2))
 print(m3.shape)
 print(m3.data)
+print("------")
+m4 = Matrix((1, 3)(2, 5))
 
