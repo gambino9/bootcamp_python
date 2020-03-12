@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/11 18:25:34 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/11 19:45:26 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/03/12 13:41:11 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@
 # and an arbitrary value. The string may name an existing attribute or a new
 # attribute. The function assigns the value to the attribute, provided
 # the object allows it.
+
+# https://realpython.com/python-kwargs-and-args/
 
 def what_are_the_vars(*args, **kwargs):
 	obj = ObjectC()
