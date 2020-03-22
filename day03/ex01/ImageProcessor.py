@@ -1,3 +1,4 @@
+
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -11,14 +12,30 @@
 # **************************************************************************** #
 
 import numpy as np
-import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+# https://stackoverflow.com/questions/20597088/display-a-png-image-from-python-on-mint-15-linux
+
 
 class ImageProcessor():
 	def __init__(self):
 		pass
 
 	def load(self, path):
-		pass
+		""" opens the .png file specified by the path argument and returns 
+		an array with the RGB values of the image pixels.
+		It must display a message specifying the dimensions of the image
+		(e.g. 340 x 500)""" 
+		img = plt.imread(path)
+		y = img.shape[0]
+		x = img.shape[1]
+		# print(y)
+		# print(x)
+		return (img)
+		
 
 	def display(self, array):
+		plt.imshow(array)
+		plt.show() 
 		pass
