@@ -11,12 +11,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-
 # https://stackoverflow.com/questions/20597088/display-a-png-image-from-python-on-mint-15-linux
+# http://www.degeneratestate.org/posts/2016/Oct/23/image-processing-with-numpy/
 
+import numpy as np
+import matplotlib.pypllsot as plt
+import matplotlib.image as mpimg
 
 class ImageProcessor():
 	def __init__(self):
