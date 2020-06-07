@@ -6,7 +6,7 @@
 #    By: lamia <lamia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/23 15:54:49 by lamia             #+#    #+#              #
-#    Updated: 2020/03/23 22:54:35 by lamia            ###   ########.fr        #
+#    Updated: 2020/03/30 20:51:53 by lamia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ class ScrapBooker():
 
     def thin(self, array, n, axis):
         """ delete every n-th pixel row along the specified axis
-        (0 vertical, 1 horizontal), example below.""" 
+        (0 vertical, 1 horizontal)."""
+        if axis == 0:
+            return (array) 
         pass
 
     def juxtapose(self, array, n, axis):
