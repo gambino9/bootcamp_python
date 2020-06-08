@@ -15,7 +15,7 @@
 # http://www.degeneratestate.org/posts/2016/Oct/23/image-processing-with-numpy/
 
 import numpy as np
-import matplotlib.pypllsot as plt
+import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 class ImageProcessor():
@@ -30,6 +30,7 @@ class ImageProcessor():
 		img = plt.imread(path)
 		y = img.shape[0]
 		x = img.shape[1]
+		print("Loading image of dimensions {} x {}".format(x, y))
 		# print(y)
 		# print(x)
 		return (img)

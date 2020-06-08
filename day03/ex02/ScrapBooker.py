@@ -3,14 +3,16 @@
 #                                                         :::      ::::::::    #
 #    ScrapBooker.py                                     :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lamia <lamia@student.42.fr>                +#+  +:+       +#+         #
+#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/23 15:54:49 by lamia             #+#    #+#              #
-#    Updated: 2020/03/30 20:51:53 by lamia            ###   ########.fr        #
+#    Updated: 2020/06/08 20:44:28 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # https://www.tutorialspoint.com/numpy/numpy_indexing_and_slicing.htm
+# https://note.nkmk.me/en/python-numpy-ndarray-ndim-shape-size
+# https://machinelearningmastery.com/index-slice-reshape-numpy-arrays-machine-learning-python/
 
 import numpy as np
 
@@ -24,7 +26,11 @@ class ScrapBooker():
         corner is given by the position argument.
         The position should be (0,0) by default. You have to consider it an
         error (and handle said error) if dimensions is larger than the current
-        image size.""" 
+        image size."""
+        ar = np.array(array)
+        dim = ar.shape
+        pos = position
+        # dim = 
         pass
 
     def thin(self, array, n, axis):
