@@ -6,13 +6,15 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/23 15:54:49 by lamia             #+#    #+#              #
-#    Updated: 2020/06/08 20:44:28 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/06/15 20:58:49 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # https://www.tutorialspoint.com/numpy/numpy_indexing_and_slicing.htm
 # https://note.nkmk.me/en/python-numpy-ndarray-ndim-shape-size
 # https://machinelearningmastery.com/index-slice-reshape-numpy-arrays-machine-learning-python/
+# https://www.pythoninformer.com/python-libraries/numpy/index-and-slice/
+# https://note.nkmk.me/en/python-numpy-delete/
 
 import numpy as np
 
@@ -27,17 +29,23 @@ class ScrapBooker():
         The position should be (0,0) by default. You have to consider it an
         error (and handle said error) if dimensions is larger than the current
         image size."""
-        ar = np.array(array)
-        dim = ar.shape
-        pos = position
-        # dim = 
-        pass
+        try:
+            if dimensions > array.shape:
+                raise TypeError("dimensions must be inferior to array's dimensions")
+        except TypeError as e:
+            print(e)
+            exit()
+        height = dimensions[0]
+        width = dimensions[1]
+        arr = np.array(array)
+        newArr = arr[:height,width]
+        return (newArr)
 
     def thin(self, array, n, axis):
         """ delete every n-th pixel row along the specified axis
         (0 vertical, 1 horizontal)."""
-        if axis == 0:
-            return (array) 
+        axis = 1 - axis
+        
         pass
 
     def juxtapose(self, array, n, axis):
