@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/23 15:54:49 by lamia             #+#    #+#              #
-#    Updated: 2020/06/15 20:58:49 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/06/16 20:25:32 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@
 # https://machinelearningmastery.com/index-slice-reshape-numpy-arrays-machine-learning-python/
 # https://www.pythoninformer.com/python-libraries/numpy/index-and-slice/
 # https://note.nkmk.me/en/python-numpy-delete/
+# https://numpy.org/doc/1.18/reference/generated/numpy.concatenate.html
+# https://numpy.org/doc/stable/reference/generated/numpy.tile.html
 
 import numpy as np
 
@@ -45,16 +47,17 @@ class ScrapBooker():
         """ delete every n-th pixel row along the specified axis
         (0 vertical, 1 horizontal)."""
         axis = 1 - axis
-        
-        pass
+        arr = np.delete(array, np.s_[n-1::n], axis)
+        return (arr)
 
     def juxtapose(self, array, n, axis):
         """ juxtapose n copies of the image along the specified axis
         (0 vertical, 1 horizontal)""" 
-        pass
+        axis = 1 - axis
+        return (np.concatenate([array] * n, axis))
 
     def mosaic(self, array, dimensions):
         """ make a grid with multiple copies of the array.
         The dimensions argument specifies the dimensions (meaning
-        the height and width) of the grid (e.g. 2x3).""" 
-        pass
+        the height and width) of the grid (e.g. 2x3)."""
+        return (np.tile(array, (dimensions)))

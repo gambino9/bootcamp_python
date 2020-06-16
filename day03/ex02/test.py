@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/25 15:36:10 by lamia             #+#    #+#              #
-#    Updated: 2020/06/15 20:55:53 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/06/16 19:19:51 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,26 +28,28 @@ b = np.array([['A','B','C','D','E','F','G','H','I','J','K','L'],['A','B','C','D'
 
 # THIN
 
-print(a)
-print("array shape of a is {}".format(a.shape))
-print("------------")
-# a_del = np.delete(b, [:,0:10:2], 1)
+# print(a)
+# print("array shape of a is {}".format(a.shape))
+# print("------------")
+# a_del = np.delete(a, np.s_[3::4], 1)
+# print(a_del)
+# print("array shape of a_del is {}".format(a_del.shape))
+# print("------------")
 
-# printer les rangees 
-# a_del = a[::4,:]
-# printer les colonnes  
-# a_del = a[:,::2]
-# a_del = np.delete(b, list(range(1, b.shape[0], 3)), 1)
-# a_del = np.delete(b, slice(None, None, 3), 1)
-a_del = np.delete(a, np.s_[3::4], 0)
-print(a_del)
-print("array shape of a_del is {}".format(a_del.shape))
+# JUXTAPOSE & MOSAIC
 
-print("------------")
-a2 = np.array([[1, 2, 3],
+a1 = np.array([[1, 2, 3],
             	[4, 5, 6],
 				[7, 8, 9]])
-# print(a2[])
+n = 3
+print(a1)
+print("------------")
+# a2 = np.concatenate([a1] * n,0)
+a2 = np.tile(a1, (4,3))
+print("------------")
+# a2 = np.tile(a1,2)
+print(a2)
+
 
 
 # 3 different examples of using reshape to turn arrays into 1 2 or 3D :
