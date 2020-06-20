@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    FileLoader.py                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lamia <lamia@student.42.fr>                +#+  +:+       +#+         #
+#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/24 17:37:39 by lamia             #+#    #+#              #
-#    Updated: 2020/06/07 21:47:47 by lamia            ###   ########.fr        #
+#    Updated: 2020/06/20 20:02:57 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,16 @@ class FileLoader():
         as a pandas.DataFrame.
         """
         data = pd.read_csv(path)
-        # print(type(data))
+        # Here we get the dimensions of the csv under form of a tuple
         df_ndim = data.shape
-        print("Loading dataset of dimensions {} x {}".format(df_ndim[0], df_ndim[1])) 
-        # print(df_ndim)
+        print("Loading dataset of dimensions {} x {}".format(df_ndim[0], df_ndim[1]))
         return (data)
         pass
 
-    def display(df, n):
-        `df = df
+    def display(self, df, n):
+        df = df
         if n > 0:
-            df.head(n)
+            print(df.head(n))
         else:
-            df.tail(n)
+            print(df.tail(n * -1))
         pass

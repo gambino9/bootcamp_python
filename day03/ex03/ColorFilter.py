@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/16 20:19:42 by lboukrou          #+#    #+#              #
-#    Updated: 2020/06/16 20:24:13 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/06/20 19:40:38 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ class ColorFilter():
 		pass
 	
 	def invert(self, array):
+		return 1 - array
 		pass
 
 	def to_blue(self, array):
