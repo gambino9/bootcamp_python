@@ -1,23 +1,26 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    YoungestFellah.py                                  :+:      :+:    :+:    #
+#    test.py                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/06/20 20:52:15 by lboukrou          #+#    #+#              #
-#    Updated: 2020/06/21 20:27:58 by lboukrou         ###   ########.fr        #
+#    Created: 2020/06/21 18:30:07 by lboukrou          #+#    #+#              #
+#    Updated: 2020/06/21 20:56:51 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from FileLoader import FileLoader
+from YoungestFellah import YoungestFellah
 import pandas as pd
 
-def YoungestFellah(df, year):
-	dic = df.to_dict(orient=dict)
-	dic.set_index("Age", drop=True, inplace=True)
-	dictionary = df.to_dict(orient=dict)
-	# dictionary = dic.to_dict(orient="Age")
-	d = {}
-	# for k in dic:
-		# d[k] =
+loader = FileLoader()
+data = loader.load('../resources/athlete_events.csv')
+year = 2002
+# data_year = (data.Year==year) == True
+data_year = data[data.Year == year]
+print(data_year)
+data.to_dict('dict')
+print(type(data))
+# print(data.Age.min)
+print(type(data.Sex))
