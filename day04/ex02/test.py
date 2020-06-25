@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 18:32:11 by lboukrou          #+#    #+#              #
-#    Updated: 2020/06/24 21:08:05 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/06/25 20:35:46 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,15 @@ gender = 'F'
 data_year = df[df.Year == year]
 # tennismen durant cette annee
 data_global_gender = data_year[data_year.Sex == gender]
-data_sport = data_global_gender[data_global_gender.Sport == sport]
 # genre specifique de tennismen durant cette annee
 # data_gender = data_sport[data_sport.Sex == gender]
 # genre specifique global durant cette annee
 # print(type(data_gender))
-df_ndim = data_sport.shape
 # df_nd = data_gender.shape
+data_global_gender = data_global_gender.drop_duplicates("Name", keep='first', inplace=False)
+data_sport = data_global_gender[data_global_gender.Sport == sport]
 d = data_global_gender.shape
+df_ndim = data_sport.shape
 print("Loading data_sport of dimensions {} x {}".format(df_ndim[0], df_ndim[1]))
 # print("Loading data_gender of dimensions {} x {}".format(df_nd[0], df_nd[1]))
 print("Loading data_global_gender of dimensions {} x {}".format(d[0], d[1]))
