@@ -6,7 +6,7 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/27 20:36:59 by lboukrou          #+#    #+#              #
-#    Updated: 2020/06/27 21:00:16 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/06/28 19:25:49 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,9 @@ loader = FileLoader()
 df = loader.load('../resources/athlete_events.csv')
 name = 'Kjetil Andr Aamodt'
 data_years = df[df.Name == name]
+print(data_years)
 data_years = data_years.dropna()
 dic = {}
-print(data_years)
+dic = data_years.to_dict()
+print(dic)
+gold, silver, bronze = 0, 0, 0
