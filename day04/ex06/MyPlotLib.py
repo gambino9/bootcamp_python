@@ -1,30 +1,32 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    test.py                                            :+:      :+:    :+:    #
+#    MyPlotLib.py                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/06/28 19:35:38 by lboukrou          #+#    #+#              #
-#    Updated: 2020/06/29 20:40:17 by lboukrou         ###   ########.fr        #
+#    Created: 2020/06/29 21:34:06 by lboukrou          #+#    #+#              #
+#    Updated: 2020/06/29 22:37:07 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# https://www.journaldunet.com/solutions/analytics/1210938-le-feature-engineering-futur-du-data-scientist/
 
 from FileLoader import FileLoader
 import pandas as pd
 
-df = FileLoader()
-df = df.load("../resources/athlete_events.csv")
-year = 2016
-location = 'Athina'
-data_when = df[df.Year == year]
-data_where = df[df.City == location]
-# print(data_when)
-print(data_where)
-col = data_where['Year'].unique()
-col = list(col)
-print(col)
-print(type(col))
-data_when = data_when.City.iloc[0]
-print(data_when)
-print(type(data_when))
+class MyPLotLib():
+	def __init__(self, df, features):
+		pass
+
+	def histograms(self, df, features):
+		pass
+
+	def density(self, df, features):
+		pass
+
+	def pair_plot(self, df, features):
+		pass
+
+	def box_plot(self, df, features):
+		pass
