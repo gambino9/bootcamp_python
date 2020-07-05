@@ -6,11 +6,12 @@
 #    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/29 21:34:06 by lboukrou          #+#    #+#              #
-#    Updated: 2020/06/29 22:37:07 by lboukrou         ###   ########.fr        #
+#    Updated: 2020/07/05 20:57:21 by lboukrou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # https://www.journaldunet.com/solutions/analytics/1210938-le-feature-engineering-futur-du-data-scientist/
+# https://towardsdatascience.com/understanding-feature-engineering-part-1-continuous-numeric-data-da4e47099a7b
 
 from FileLoader import FileLoader
 import pandas as pd
