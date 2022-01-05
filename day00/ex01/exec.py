@@ -12,12 +12,14 @@
 
 import sys
 
-x = 0
-s = ""
 
-for arg in sys.argv:
-    if (x != 0):
-       s += arg.swapcase() + " "
-    x += 1
-l = len(s)
-print(''.join(reversed(s))[1:l])
+def rev_alpha(*args):
+    phrase = ""
+    for arg in args:
+        phrase += " ".join(arg)
+    res = phrase.swapcase()
+    return res[::-1]
+
+
+if __name__ == "__main__":
+    print(rev_alpha(sys.argv[1:]))
