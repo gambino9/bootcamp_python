@@ -10,8 +10,17 @@
 #                                                                              #
 # **************************************************************************** #
 
-pip freeze
+# Command to output a list of installed packages
 pip list
+
+# Command to output a list of installed packages and their versions
+pip freeze
+
+# Command to show the package metadata of numpy
 pip show --verbose numpy
+
+# Command to search for PyPI packages whose name or summary contains "tesseract"
 pip search tesseract
-pip freeze > requierements.txt
+
+# Command to freeze the packages and their current versions in a requirements.txt file you have to turn-in
+pip freeze > requirements.txt
