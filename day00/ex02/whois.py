@@ -12,20 +12,19 @@
 
 import sys
 
-def whois():
-	x = 0
-	if (len(sys.argv) != 2):
-		return ("ERROR")
-	if (sys.argv[1].isdigit() == False):
-		return ("ERROR")
-	x = int(sys.argv[1])
-	if (x == 0):
-		return  ("I'm Zero.")
-	elif (x % 2 == 0):
-		return  ("I'm Even.")
-	elif (x % 2 != 0):
-		return  ("I'm Odd.")
-	else:
-		return  ("ERROR")
 
-print (whois())
+def whois(number):
+	if not number.isdigit():
+		return "ERROR"
+	else:
+		num = int(number)
+		if num == 0:
+			return "I'm Zero."
+		return "I'm Even." if num % 2 == 0 else "I'm Odd."
+
+
+if __name__ == "__main__":
+	if len(sys.argv) != 2:
+		print("ERROR")
+		sys.exit()
+	print(whois(sys.argv[1]))
