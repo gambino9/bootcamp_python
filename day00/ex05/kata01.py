@@ -1,24 +1,14 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    kata01.py                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/02/07 18:05:50 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/11 18:20:35 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# Introduction to dictionnaries in Python
-# https://www.w3schools.com/python/python_dictionaries.asp
-# A simple exercice to print keys and keys's values
-
 languages = {
 	'Python': 'Guido van Rossum',
 	'Ruby': 'Yukihiro Matsumoto',
 	'PHP': 'Rasmus Lerdorf',
 }
 
-for i in languages:
-	print(i,"was created by",languages[i])
+
+def kata01(dic):
+	for elem in dic:
+		print(elem, "was created by", dic[elem])
+
+
+if __name__ == "__main__":
+	kata01(languages)
