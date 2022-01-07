@@ -1,18 +1,10 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    kata00.py                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/02/07 17:58:04 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/07 18:16:57 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+tup = (19, 42, 21)
 
-# 	Getting familiar with string formating
-#	using a tuple
 
-t = (19,42,21)
+def kata00(numbers):
+	print(f"The {len(numbers)} numbers are : {', '.join(str(a) for a in numbers)}")
+	print("the 3 numbers are : %d, %d, %d" % (tup[0], tup[1], tup[2]))
 
-print("the 3 numbers are : %d, %d, %d" % (t[0], t[1], t[2]))
+
+if __name__ == "__main__":
+	kata00(tup)
