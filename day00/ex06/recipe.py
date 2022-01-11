@@ -88,58 +88,67 @@ if __name__ == "__main__":
 	# new_ingredient = ['eggs', 'fromage', 'pepper']
 	# new_meal = 'lunch'
 	# new_prep_time = 5
-	print("Please select an option by typing the corresponding number\n"
-		  "1: Add a recipe\n"
-		  "2: Delete a recipe\n"
-		  "3: Print a recipe\n"
-		  "4: Print the cookbook\n"
-		  "5: Quit\n")
+	menu = "\nPlease select an option by typing the corresponding number\n" \
+		   "1: Add a recipe\n" \
+		   "2: Delete a recipe\n" \
+		   "3: Print a recipe\n" \
+		   "4: Print the cookbook\n" \
+		   "5: Quit\n"
 	while True:
 		try:
+			print(menu)
 			choice = int(input())
 			if 0 < choice < 6:
 				if choice == 1:
-					try:
-						print("To add a new recipe, you must enter the following informations :\n")
-						name = str(input("A name : "))
-						if not name.isalpha():
-							raise ValueError
-						meal = str(input("A meal type : "))
-						if not meal.isalpha():
-							raise ValueError
-						time = int(input("The time of preparation : "))
-						nbr_ingredients = int(input("The number of ingredients : "))
-						print("The ingredients : ")
-						ingredients = [str(input()) for i in range(nbr_ingredients)]
-						add_new_recipe(name, ingredients, meal, time)
-					except ValueError as ve:
-						print("Wrong value entered")
+					while True:
+						try:
+							print("To add a new recipe, you must enter the following informations :\n")
+							name = str(input("A name : "))
+							if not name.isalpha():
+								raise ValueError
+							meal = str(input("A meal type : "))
+							if not meal.isalpha():
+								raise ValueError
+							time = int(input("The time of preparation : "))
+							nbr_ingredients = int(input("The number of ingredients : "))
+							print("The ingredients : ")
+							ingredients = [str(input()) for i in range(nbr_ingredients)]
+							add_new_recipe(name, ingredients, meal, time)
+							print("\nThe recipe has been successfully added to the cookbook !\n")
+							break
+						except ValueError as ve:
+							print("\nWrong value entered\n")
+							continue
 				elif choice == 2:
-					try:
-						recipe_to_del = str(input("Please enter the name of the recipe to delete :\n"))
-						delete_recipe(recipe_to_del)
-					except ValueError as ve:
-						print(ve)
-						pass
-					except KeyError:
-						print("This recipe is not in the cookbook.\n")
+					while True:
+						try:
+							recipe_to_del = str(input("Please enter the name of the recipe to delete :\n"))
+							delete_recipe(recipe_to_del)
+							print("\nThe recipe has been successfully deleted from the cookbook !\n")
+							break
+						except KeyError:
+							print("\nThis recipe is not in the cookbook.\n")
+							continue
 				elif choice == 3:
-					try:
-						recipe_to_print = str(input("Please enter the recipe's name to get its details :\n"))
-						print_recipe(recipe_to_print)
-					except ValueError as ve:
-						print(ve)
-						pass
-					except KeyError:
-						print("This recipe is not in the cookbook.\n")
+					while True:
+						try:
+							recipe_to_print = str(input("\nPlease enter the recipe's name to get its details :\n"))
+							print_recipe(recipe_to_print)
+							break
+						except ValueError as ve:
+							print(ve)
+							pass
+						except KeyError:
+							print("\nThis recipe is not in the cookbook.\n")
+							continue
 				elif choice == 4:
 					print_all_recipe_names()
 				elif choice == 5:
-					print("Cookbook closed.\nGood-bye !")
+					print("\nCookbook closed.\nGood-bye !")
 					sys.exit()
 			else:
 				raise ValueError
 		except ValueError:
-			print("This option does not exist, please type the corresponding "
+			print("\nThis option does not exist, please type the corresponding "
 				  "number.\nTo exit, enter 5.\n")
 			continue
