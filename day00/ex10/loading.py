@@ -30,10 +30,24 @@ if __name__ == "__main__":
 	# print()
 	# print(ret)
 
-	listy = range(3333)
+	# listy = range(3333)
+	# ret = 0
+	# for elem in ft_progress(listy):
+	# 	ret += elem
+	# 	time.sleep(0.005)
+	# print()
+	# print(ret)
+
+	# Test from correction subjects :
+	# X = range(100)
+	# X = range(100, 200)
+	# X = range(1)
+	# X = range(4)
+	X = range(0, -100, -1)
+
 	ret = 0
-	for elem in ft_progress(listy):
-		ret += elem
-		time.sleep(0.005)
+	for elem in ft_progress(X):
+		ret += (elem + 3) % 5
+		time.sleep(0.1)
 	print()
 	print(ret)
