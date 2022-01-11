@@ -13,12 +13,14 @@ def guess():
 		guess = None
 		try:
 			guess = int(i)
+			if not 1 < guess < 100:
+				raise ValueError
 		except ValueError:
 			if i == "exit":
 				print("Goodbye !")
 				exit()
 			else:
-				print("That's not a number.")
+				print("Wrong input")
 				attempt += 1
 				continue
 		if guess < secret:
