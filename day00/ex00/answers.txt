@@ -8,7 +8,7 @@ pip freeze
 pip show --verbose numpy
 
 # Command to search for PyPI packages whose name or summary contains "tesseract"
-pip search tesseract
+pip search tesseract BUT is deprecated, so use instead ---> conda search
 
 # Command to freeze the packages and their current versions in a requirements.txt file you have to turn-in
 pip freeze > requirements.txt
