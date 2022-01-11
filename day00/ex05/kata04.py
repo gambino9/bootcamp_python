@@ -2,4 +2,4 @@
 
 tup = (0, 4, 132.42222, 10000, 12345.67)
 
-print(f"module_0{tup[0]}, ex_0{tup[1]} : {tup[2]:.2f}, {tup[3]:.2e}, {tup[4]:.2e}")
+print(f"module_{tup[0]:02}, ex_{tup[1]:02} : {tup[2]:.2f}, {tup[3]:.2e}, {tup[4]:.2e}")
