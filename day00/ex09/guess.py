@@ -3,7 +3,7 @@ from random import randint
 
 def guess():
 	secret = randint(1, 99)
-	# print(secret)
+	print(secret)
 	attempt = 0
 	print(
 		"This is an interactive guessing game !\nYou have to enter a number between 1 and 99 to find out the secret "
@@ -15,9 +15,11 @@ def guess():
 			guess = int(i)
 		except ValueError:
 			if i == "exit":
+				print("Goodbye !")
 				exit()
 			else:
 				print("That's not a number.")
+				attempt += 1
 				continue
 		if guess < secret:
 			print("Too low !")
