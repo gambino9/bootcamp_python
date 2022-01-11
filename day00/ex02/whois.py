@@ -2,6 +2,7 @@ import sys
 
 
 def whois(number):
+	number = number.lstrip('-+')
 	if not number.isdigit():
 		return "ERROR"
 	else:
