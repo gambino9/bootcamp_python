@@ -49,11 +49,11 @@ class RecipeTest(unittest.TestCase):
 		with self.assertRaises(SystemExit):
 			recette = Recipe(self.name, self.cook_level, self.cook_time, empty_ingredients, self.descr, self.rcp_type)
 		with self.assertRaises(SystemExit):
-			recette = Recipe(self.name, self.cook_level, self.cook_time, many_empty_ingredients, self.descr, self.rcp_type)
+			recette_2 = Recipe(self.name, self.cook_level, self.cook_time, many_empty_ingredients, self.descr, self.rcp_type)
 		with self.assertRaises(SystemExit):
-			recette = Recipe(self.name, self.cook_level, self.cook_time, different_type_ingredients, self.descr, self.rcp_type)
+			recette_3 = Recipe(self.name, self.cook_level, self.cook_time, different_type_ingredients, self.descr, self.rcp_type)
 		with self.assertRaises(SystemExit):
-			recette = Recipe(self.name, self.cook_level, self.cook_time, non_list_ingredients, self.descr, self.rcp_type)
+			recette_4 = Recipe(self.name, self.cook_level, self.cook_time, non_list_ingredients, self.descr, self.rcp_type)
 
 	def test_recipe_description(self):
 		""" Testing if assigning wrong recipe description to a recipe raises a system exit"""
@@ -84,22 +84,7 @@ class RecipeTest(unittest.TestCase):
 
 if __name__ == "__main__":
 	unittest.main()
-#
-# # Creating object of type 'Recipe'
-# lst = ["chocolat", "oeufs", "farine"]
-# fondant = Recipe("fondant", 1, 30, lst, "", "dessert")
-#
-# # Using 'str' method to print properly a 'recipe' object into a text
-# my_str = str(fondant)
-# print(my_str)
-#
-# # Examples of other recipes
-# mozza_sticks = Recipe("mozza sticks", 3, 45, ["mozza", "chapelure", "oeufs"], "", "starter")
-# veloute = Recipe("veloute", 1, 70, ["légumes", "creme fraiche"], "", "starter")
-# sandwich = Recipe("sandwich", 1, 10, ["crudites", "jambon"], "", "lunch")
-# ratatouille = Recipe("ratatouille", 4, 45, ["légumes d'été", "sel et poivre"], "", "lunch")
-# tarte_citron = Recipe("tarte_au_citron", 3, 60, ["citron", "tarte"], "", "dessert")
-#
+
 # cookbook = {
 # 	'starter' :
 # 	{
