@@ -1,62 +1,51 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    recipe.py                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/02/18 17:58:24 by lboukrou          #+#    #+#              #
-#    Updated: 2020/02/29 18:26:43 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+import sys
 
-#	Discovering how to create a class
 
-#	Possible Improvements :
-#	- Defining specific methods to handle the parsing
-
-class Recipe:										#	Defining 'Recipe' class
-	def __init__(self, name, cooking_lvl, cooking_time, ingredients, description, recipe_type):	#	Method called when creating an object
-		self.name = name							#	Attribute of class Recipe. This one stocks name for ex
+class Recipe:
+	def __init__(self, name, cooking_lvl, cooking_time, ingredients, description, recipe_type):
+		self.name = name
 		self.cooking_lvl = cooking_lvl
 		self.cooking_time = cooking_time
 		self.ingredients = ingredients
 		self.description = description
 		self.recipe_type = recipe_type
 		try:
-			assert type(name) == str and name != ""
-		except AssertionError:
-			print("Name should be a string and should not be empty")
-			exit()
-		try:
-			assert type(cooking_lvl) == int and cooking_lvl > 0 and cooking_lvl < 6
-		except AssertionError:
-			print("Cooking level must be between 1 and 5")
-			exit()
-		try:
-			assert type(cooking_time) == int and cooking_time > 0
-		except AssertionError:
-			print("cooking-time should not be negative")
-			exit()
-		try:
-			assert type(ingredients) == list and len(ingredients) != 0
-		except AssertionError:
-			print("Ingredients can only be a list and must not be empty")
-			exit()
-		try:
-			assert type(description) == str
-		except AssertionError:
-			print("Description should only be a string")
-			exit()
-		try:
-			assert recipe_type == "starter" or recipe_type == "lunch" or recipe_type == "dessert"
-		except AssertionError:
-			print("Wrong type of recipe")
-			exit() 
-	
-	#	Defining a str method to print properly all information about a recipe
+			if not isinstance(name, str) or name == "":
+				raise TypeError("ERROR : Name must be a non-empty string")
+			if not isinstance(cooking_lvl, int) or not 0 < cooking_lvl < 6:
+				raise TypeError("ERROR : Cooking_level must be a integer between 1 and 5")
+			if not isinstance(cooking_time, int) or cooking_time < 0:
+				raise TypeError("ERROR : Cooking time should be a positive integer")
+			if not isinstance(ingredients, list) or not all(ingredients) or not all(isinstance(elem, str) for elem in ingredients) or not ingredients:
+				raise TypeError("ERROR : Ingredients must be a non-empty list containing strings")
+			if not isinstance(description, str):
+				raise TypeError("ERROR : Description must be a string")
+			if recipe_type not in ['starter', 'lunch', 'dessert']:
+				raise TypeError("ERROR : Wrong type of recipe")
+		except TypeError as te:
+			sys.exit(te)
+
 	def __str__(self):
 		"""Return the string to print with the recipe info"""
-		text = "The name of this recipe is {}, on a difficulty cooking scale up to five, it is a {}.\nIt takes {} minutes to cook.\nIt has the following ingredients : {}.\nHere is a quick description : {}.\nThis recipe is a {}.\nBon appetit !".format(self.name, self.cooking_lvl, self.cooking_time, self.ingredients, self.description, self.recipe_type)
+		text = f"The name of this recipe is {self.name}, on a difficulty " \
+			   f"cooking scale up to five, it is a {self.cooking_lvl}.\n" \
+			   f"It takes {self.cooking_time} minutes to cook.\nIt has the " \
+			   f"following ingredients : {self.ingredients}.\nHere is a quick " \
+			   f"description : {self.description}.\nThis recipe is a " \
+			   f"{self.recipe_type}.\nBon appetit !"
 		return text
-		
+
+
+if __name__ == "__main__":
+	nom = "omelette au fromage"
+	cook_level = 2
+	cook_time = 9
+	ingredient = ['eggs', 'cheese', 'pepper']
+	# ingredient = []
+	descr = 'Une omelette avec du fromage dedans'
+	rcp_type = 'lunch'
+	rec = Recipe(nom, cook_level, cook_time, ingredient, descr, rcp_type)
+
+	to_print = str(rec)
+	print(to_print)
+	# print(rec.__str__())
