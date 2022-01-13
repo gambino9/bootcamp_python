@@ -82,46 +82,67 @@ class RecipeTest(unittest.TestCase):
 		self.assertEqual(str(recette), expected_text)
 
 
+class BookTest(unittest.TestCase):
+	mozzarella = Recipe('mozzarella_sticks', 3, 20, ['mozzarella', 'sticks'], "", "starter")
+	nugget = Recipe('nugget', 4, 65, ['chicken', 'bread'], "", "starter")
+	omelette = Recipe('omelette au fromage', 2, 10, ['eggs', 'cheese', 'pepper'], "", "lunch")
+	fondant = Recipe('fondant', 4, 30, ['eggs', 'chocolate', 'butter'], "", "dessert")
+	creation = datetime.datetime(2019, 4, 13, 00, 00, 00)
+	last = datetime.datetime(2019, 5, 27, 00, 00, 00)
+	recipe_list = {
+		'starter': {
+			mozzarella,
+			nugget,
+		},
+		'lunch': {
+			omelette,
+		},
+		'dessert': {
+			fondant,
+		}
+	}
+	test_book = Book("Text Book", last, creation, recipe_list)
+
+	def test_get_recipe_by_type_method(self):
+		gibberish_type = "blabla"
+		integer_type = 123
+
+		with self.assertRaises(SystemExit):
+			self.test_book.get_recipes_by_type(gibberish_type)
+			self.test_book.get_recipes_by_type(integer_type)
+
+	def test_get_recipe_by_name_method(self):
+		non_existing_name = "blabla"
+		int_name = 123
+		empty_name = ""
+
+		with self.assertRaises(SystemExit):
+			self.test_book.get_recipes_by_type(non_existing_name)
+			self.test_book.get_recipes_by_type(int_name)
+			self.test_book.get_recipes_by_type(empty_name)
+
+	def test_add_recipe_method(self):
+		non_recipe_object = "blabla"
+
+		with self.assertRaises(SystemExit):
+			self.test_book.add_recipe(non_recipe_object)
+
+	def test_add_recipe_does_the_adding(self):
+		recipe_to_add = Recipe('pasta', 1, 9, ['pasta', 'water'], "", 'lunch')
+		self.test_book.add_recipe(recipe_to_add)
+		type_of_added_recipe = recipe_to_add.recipe_type
+
+		self.assertIn(recipe_to_add, self.test_book.recipes_list[type_of_added_recipe])
+
+	def test_add_recipe_method_update_time(self):
+		recipe_to_add = Recipe('cheesecake', 5, 45, ['cheese', 'cake'], "", 'dessert')
+		last_update1 = self.test_book.last_update
+		self.test_book.add_recipe(recipe_to_add)
+		self.test_book.print_content_recipe_list()
+		last_update2 = self.test_book.last_update
+
+		self.assertNotEqual(last_update1, last_update2)
+
+
 if __name__ == "__main__":
 	unittest.main()
-
-# cookbook = {
-# 	'starter' :
-# 	{
-# 		mozza_sticks,
-# 		veloute,
-# 	},
-# 	'lunch':{
-# 		# 'sandwich',
-# 		# 'ratatouille',
-# 	},
-# 	'dessert':{
-# 		# 'fondant',
-# 		# 'tarte au citron',
-# 	}
-# }
-#
-# # datetime attributes of a 'book' object
-# last_up = datetime.datetime.strptime('2020-02-08', "%Y-%m-%d")
-# crea_date = datetime.datetime.strptime('2020-03-09', "%Y-%m-%d")
-#
-# # Creating object of type 'book'
-# livre = Book("livre de recettes", last_up, crea_date, cookbook)
-# print(livre.last_update)
-# print(crea_date)
-#
-# # Using 'get_recipes_by_type' method and printing result in form of a list
-# recipes_by_type = livre.get_recipes_by_type("starter")
-# print(recipes_by_type)
-#
-# # Example of how to use add_recipe method
-# # print(cookbook)
-# new_recipe_to_add = livre.add_recipe(ratatouille)
-# new_recipe_to_add_2 = livre.add_recipe(sandwich)
-# print(livre.last_update)
-#
-# for i in cookbook['lunch']:
-# 	print(i.name)
-# print(cookbook)
-# # Have to finish 'get_recipe_by_name method'
-# nam_recipe_to_print = livre.get_recipe_by_name(veloute)
