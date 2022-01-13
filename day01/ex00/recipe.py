@@ -3,12 +3,6 @@ import sys
 
 class Recipe:
 	def __init__(self, name, cooking_lvl, cooking_time, ingredients, description, recipe_type):
-		# self.name = name
-		# self.cooking_lvl = cooking_lvl
-		# self.cooking_time = cooking_time
-		# self.ingredients = ingredients
-		# self.description = description
-		# self.recipe_type = recipe_type
 		try:
 			if not isinstance(name, str) or name == "":
 				raise TypeError("ERROR : Name must be a non-empty string")
@@ -40,18 +34,3 @@ class Recipe:
 			   f"description : {self.description}.\nThis recipe is a " \
 			   f"{self.recipe_type}.\nBon appetit !"
 		return text
-
-
-if __name__ == "__main__":
-	nom = "omelette au fromage"
-	cook_level = 2
-	cook_time = 9
-	ingredient = ['eggs', 'cheese', 'pepper']
-	# ingredient = []
-	descr = 'Une omelette avec du fromage dedans'
-	rcp_type = 'lunch'
-	rec = Recipe(nom, cook_level, cook_time, ingredient, descr, rcp_type)
-
-	to_print = str(rec)
-	print(to_print)
-	# print(rec.__str__())
