@@ -16,7 +16,7 @@ class Vector:
 		elif len(args) == 0:
 			raise MatrixError("Not enough argument")
 
-
+		# TODO : Do the rest
 		if values != None:
 			if type(values) == list:
 				for i in values:
