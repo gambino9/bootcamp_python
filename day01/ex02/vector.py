@@ -1,22 +1,22 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    vector.py                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/01 19:02:39 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/11 12:40:10 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # Creating Vector class that initializes a vector object in 3 differents way :
 # - a list of floats : Vector([0.0, 1.0, 2.0, 3.0])
 # - a size of Vector(3) --> vector.values = [0.0, 1.0, 2.0]
 # - a range of Vector((10. 14)) --> vector.values = [10.0, 11.0, 12.0, 13.0]
+class MatrixError(Exception):
+	""" Exception class for Matrix"""
+	pass
+
 
 class Vector:
-	def __init__(self, values=None):
+	def __init__(self, values=None, *args):
+		self.data = None
+		self.shape = None
+		if len(args) >= 2:
+			raise MatrixError("Too many arguments")
+		elif len(args) == 0:
+			raise MatrixError("Not enough argument")
+
+
 		if values != None:
 			if type(values) == list:
 				for i in values:
@@ -39,6 +39,7 @@ class Vector:
 		elif values == None:
 			print("Please enter values, a size, or a range of vector")
 			exit()
+
 # Overloading many operators here using 'magic methods' (built-in functions) :
 	def __add__(self, other):
 		if type(other) == int or type(other) == float:
