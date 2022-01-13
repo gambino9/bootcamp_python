@@ -3,25 +3,31 @@ import sys
 
 class Recipe:
 	def __init__(self, name, cooking_lvl, cooking_time, ingredients, description, recipe_type):
-		self.name = name
-		self.cooking_lvl = cooking_lvl
-		self.cooking_time = cooking_time
-		self.ingredients = ingredients
-		self.description = description
-		self.recipe_type = recipe_type
+		# self.name = name
+		# self.cooking_lvl = cooking_lvl
+		# self.cooking_time = cooking_time
+		# self.ingredients = ingredients
+		# self.description = description
+		# self.recipe_type = recipe_type
 		try:
 			if not isinstance(name, str) or name == "":
 				raise TypeError("ERROR : Name must be a non-empty string")
+			self.name = name
 			if not isinstance(cooking_lvl, int) or not 0 < cooking_lvl < 6:
 				raise TypeError("ERROR : Cooking_level must be a integer between 1 and 5")
+			self.cooking_lvl = cooking_lvl
 			if not isinstance(cooking_time, int) or cooking_time < 0:
 				raise TypeError("ERROR : Cooking time should be a positive integer")
+			self.cooking_time = cooking_time
 			if not isinstance(ingredients, list) or not all(ingredients) or not all(isinstance(elem, str) for elem in ingredients) or not ingredients:
 				raise TypeError("ERROR : Ingredients must be a non-empty list containing strings")
+			self.ingredients = ingredients
 			if not isinstance(description, str):
 				raise TypeError("ERROR : Description must be a string")
+			self.description = description
 			if recipe_type not in ['starter', 'lunch', 'dessert']:
 				raise TypeError("ERROR : Wrong type of recipe")
+			self.recipe_type = recipe_type
 		except TypeError as te:
 			sys.exit(te)
 

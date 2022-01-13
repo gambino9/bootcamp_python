@@ -6,23 +6,27 @@ import datetime
 
 class Book:
 	def __init__(self, name, last_update, creation_date, recipes_list):
-		self.name = name
-		self.last_update = last_update
-		self.creation_date = creation_date
-		self.recipes_list = recipes_list
+		# self.name = name
+		# self.last_update = last_update
+		# self.creation_date = creation_date
+		# self.recipes_list = recipes_list
 
-		# TODO : Put the assignation after each check, also change in Recipe
 		try:
 			if not isinstance(name, str) or not name:
 				raise TypeError("Name should be a string and should not be empty")
+			self.name = name
 			if not isinstance(last_update, datetime.date):
 				raise TypeError("last_update should be a datatime type")
+			self.last_update = last_update
 			if not isinstance(creation_date, datetime.date):
 				raise TypeError("creation_date should be a datatime type")
+			self.creation_date = creation_date
 			if not isinstance(recipes_list, dict):
 				raise TypeError("recipes_list should be a dictionary")
 			if not all(key in ['starter', 'lunch', 'dessert'] for key in recipes_list.keys()):
 				raise TypeError("The dictionary does not contain the right keys")
+			self.recipes_list = recipes_list
+
 		except TypeError as te:
 			sys.exit(te)
 
