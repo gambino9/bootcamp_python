@@ -111,8 +111,17 @@ class Vector:
 		""" 
 		Link explaining in detail str and repr methods : 
 		https://stackoverflow.com/questions/1436703/difference-between-str-and-repr/2626364#2626364
+		__repr__ goal is to be unambiguous (purpose of development, debugging, etc...)
+		__str__ goal is to be readable
 		"""
-		pass
+		return f"This {self.__class__.__name__} object contains the following " \
+			   f"values : ({self.values}) and is of shape : {self.shape}"
 
 	def __repr__(self):
+		return f"{str(self.__class__.__name__)}({self.values})"
+
+	def dot(self, v):
+		pass
+
+	def t(self, v):
 		pass
