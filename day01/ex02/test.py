@@ -2,7 +2,7 @@ from vector import Vector, VectorError
 import unittest
 
 
-class VectorTest(unittest.TestCase):
+class VectorConstructorTest(unittest.TestCase):
 	def test_vector_with_simple_list(self):
 		"""
 		Testing instance of Vector with simple list
@@ -74,6 +74,44 @@ class VectorTest(unittest.TestCase):
 
 		self.assertTrue(v.shape == expected_shape)
 		self.assertTrue(v.values == expected_values)
+
+
+class VectorDunderMethodsTest(unittest.TestCase):
+	def test_vector_add(self):
+		v1 = Vector([[1.0], [2.0], [3.0]])
+		v2 = Vector([[2.0], [4.0], [8.0]])
+		v3 = Vector([1.0, 2.0, 3.0])
+		v4 = Vector([2.0, 4.0, 8.0])
+
+		expected1 = Vector([[3.0], [6.0], [11.0]])
+		expected2 = Vector([3.0, 6.0, 11.0])
+
+		v5 = v1 + v2
+		v6 = v3 + v4
+		self.assertTrue(isinstance(v5, Vector))
+		self.assertTrue(isinstance(v6, Vector))
+		self.assertTrue(v5.shape == expected1.shape)
+		self.assertTrue(v5.values == expected1.values)
+		self.assertTrue(v6.shape == expected2.shape)
+		self.assertTrue(v6.values == expected2.values)
+
+	def test_vector_sub(self):
+		v1 = Vector([[2.0], [4.0], [8.0]])
+		v2 = Vector([[1.0], [2.0], [3.0]])
+		v3 = Vector([2.0, 4.0, 8.0])
+		v4 = Vector([1.0, 2.0, 3.0])
+
+		expected1 = Vector([[1.0], [2.0], [5.0]])
+		expected2 = Vector([1.0, 2.0, 5.0])
+
+		v5 = v1 - v2
+		v6 = v3 - v4
+		self.assertTrue(isinstance(v5, Vector))
+		self.assertTrue(isinstance(v6, Vector))
+		self.assertTrue(v5.shape == expected1.shape)
+		self.assertTrue(v5.values == expected1.values)
+		self.assertTrue(v6.shape == expected2.shape)
+		self.assertTrue(v6.values == expected2.values)
 
 
 if __name__ == "__main__":
