@@ -113,6 +113,38 @@ class VectorDunderMethodsTest(unittest.TestCase):
 		self.assertTrue(v6.shape == expected2.shape)
 		self.assertTrue(v6.values == expected2.values)
 
+	def test_vector_truediv(self):
+		v1 = Vector([12.0, 15.0, 21.0])
+		v2 = Vector([[12.0], [15.0], [21.0]])
+		scalar = 3.0
+		expected1 = Vector([4.0, 5.0, 7.0])
+		expected2 = Vector([[4.0], [5.0], [7.0]])
+
+		v3 = v1 / scalar
+		v4 = v2 / scalar
+		self.assertTrue(isinstance(v3, Vector))
+		self.assertTrue(isinstance(v4, Vector))
+		self.assertTrue(v3.shape == expected1.shape)
+		self.assertTrue(v3.values == expected1.values)
+		self.assertTrue(v4.shape == expected2.shape)
+		self.assertTrue(v4.values == expected2.values)
+
+	def test_vector_mult(self):
+		v1 = Vector([12.0, 15.0, 21.0])
+		v2 = Vector([[12.0], [15.0], [21.0]])
+		scalar = 3.0
+		expected1 = Vector([36.0, 45.0, 63.0])
+		expected2 = Vector([[36.0], [45.0], [63.0]])
+
+		v3 = v1 * scalar
+		v4 = v2 * scalar
+		self.assertTrue(isinstance(v3, Vector))
+		self.assertTrue(isinstance(v4, Vector))
+		self.assertTrue(v3.shape == expected1.shape)
+		self.assertTrue(v3.values == expected1.values)
+		self.assertTrue(v4.shape == expected2.shape)
+		self.assertTrue(v4.values == expected2.values)
+
 
 if __name__ == "__main__":
 	unittest.main()
