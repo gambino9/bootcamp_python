@@ -74,53 +74,38 @@ class Vector:
 
 	def __truediv__(self, other):
 		""" Only scalars"""
-		if type(other) == int or type(other) == float:
-			add_list = []
-			for i in self.values:
-				add_list.append(i / other)
-			new_vec = Vector(add_list)
-			print("sub")
-			return (new_vec)
+		if isinstance(other, (int, float)):
+			if self.row_vector:
+				result = [a / other for a in self.values]
+			else:
+				result = [[a / other for a in i] for i in self.values]
+			scalar_div_obj = Vector(result)
+			return scalar_div_obj
 		else:
-			print("Division only with scalars")
+			return NotImplemented("A Vector object can only be divided by a scalar")
 
 	def __rtruediv__(self, other):
 		""" Only scalars"""
-		if type(other) == int or type(other) == scalars:
-			print("rsub")
-			add_list = []
-			for i in self.values:
-				add_list.append(i / other)
-			new_vec = Vector(add_list)
-			return (new_vec)
+		raise VectorError("A scalar can't be divided by a matrix")
 
 	def __mul__(self, other):
 		""" Only scalars"""
-		if type(other) == int or type(other) == float:
-			print("mul")
-			add_list = []
-			for i in self.values:
-				add_list.append(i * other)
-			new_vec = Vector(add_list)
-			return (new_vec)
-		elif type(other) == Vector:
-			print("mul 2 vectors")
-			add_list = []
-			min_size = min(len(self.values), len(other.values))
-			for i in range(0, min_size):
-				add_list.append(self.values[i] * other.values[i])
-			new_vec = Vector(add_list)
-			return (new_vec)
+		if isinstance(other, (int, float)):
+			if self.row_vector:
+				result = [a * other for a in self.values]
+			else:
+				result = [[a * other for a in i] for i in self.values]
+			scalar_mult_obj = Vector(result)
+			return scalar_mult_obj
+		else:
+			return NotImplemented("A Vector object can only be divided by a scalar")
 
 	def __rmul__(self, other):
 		""" Only scalars"""
-		if type(other) == int or type(other) == float:
-			print("rmul")
-			add_list = []
-			for i in self.values:
-				add_list.append(i * other)
-			new_vec = Vector(add_list)
-			return (new_vec)
+		if not isinstance(other, Vector):
+			return NotImplemented("Cannot multiply a Vector with a non Vector object")
+		else:
+			return other.__mul__(self.values)
 
 	def __str__(self):
 		""" 
