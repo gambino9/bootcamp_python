@@ -1,24 +1,80 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    test.py                                            :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/01 19:02:41 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/04 21:01:19 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+from vector import Vector, VectorError
+import unittest
 
-from vector import Vector
 
-liste = [0.0, 1.0, 2.0, 3.0]
-range_tuple = (10, 17)
-toto = Vector(liste)
-# print(toto.size)
-# print(toto.values)
-vec1 = Vector((15, 20))
-print("vec1 values", vec1.values)
-vec2 = 2 * vec1
-# print("vec1 values after op", vec1.values)
-print("vec2 values", vec2.values)
+class VectorTest(unittest.TestCase):
+	def test_vector_with_simple_list(self):
+		"""
+		Testing instance of Vector with simple list
+		Is shape correct
+		Is assigning Vector with list of int raises a VectorError
+		"""
+		f_list = ([0.0, 1.0, 2.0, 3.0])
+		i_list = ([0, 1, 2, 3])
+		expected_shape = (1, 4)
+		v = Vector(f_list)
+
+		self.assertTrue(v.shape == expected_shape)
+		with self.assertRaises(VectorError):
+			v1 = Vector(i_list)
+
+	def test_vector_with_list_of_lists(self):
+		"""
+		Testing instance of Vector with list of lists
+		Is shape correct
+		Is assigning Vector with list of lists of int raises a VectorError
+		"""
+		f_list = ([[0.0], [1.0], [2.0], [3.0]])
+		i_list = ([[0], [1], [2], [3]])
+		expected_shape = (4, 1)
+		v = Vector(f_list)
+
+		self.assertTrue(v.shape == expected_shape)
+		with self.assertRaises(VectorError):
+			v1 = Vector(i_list)
+
+	def test_vector_with_integer(self):
+		"""
+			Testing instance of Vector with integer as a size
+			Is shape correct
+			Is values created is correct
+		"""
+		integer_size = 3
+		v = Vector(integer_size)
+		expected_shape = (3, 1)
+		expected_values = [[0.0], [1.0], [2.0]]
+
+		self.assertTrue(v.shape == expected_shape)
+		self.assertTrue(v.values == expected_values)
+
+	def test_vector_with_range(self):
+		"""
+			Testing instance of Vector with range
+			Is shape correct
+			Is values created is correct
+		"""
+		vec_range = range(10, 15)
+		v = Vector(vec_range)
+		expected_shape = (5, 1)
+		expected_values = [[10.0], [11.0], [12.0], [13.0], [14.0]]
+
+		self.assertTrue(v.shape == expected_shape)
+		self.assertTrue(v.values == expected_values)
+
+	def test_vector_with_tuple(self):
+		"""
+			Testing instance of Vector with tuple as a range
+			Is shape correct
+			Is values created is correct
+		"""
+		vec_tuple = (10, 15)
+		v = Vector(vec_tuple)
+		expected_shape = (5, 1)
+		expected_values = [[10.0], [11.0], [12.0], [13.0], [14.0]]
+
+		self.assertTrue(v.shape == expected_shape)
+		self.assertTrue(v.values == expected_values)
+
+
+if __name__ == "__main__":
+	unittest.main()
