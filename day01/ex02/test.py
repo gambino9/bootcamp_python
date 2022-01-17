@@ -145,6 +145,21 @@ class VectorDunderMethodsTest(unittest.TestCase):
 		self.assertTrue(v4.shape == expected2.shape)
 		self.assertTrue(v4.values == expected2.values)
 
+	def test_transpose_method(self):
+		v1 = Vector([12.0, 15.0, 21.0])
+		v2 = Vector([[12.0], [15.0], [21.0]])
+		v3 = Vector([[12.0], [15.0], [21.0]])
+		v4 = Vector([12.0, 15.0, 21.0])
+		expected_shape1 = (3, 1)
+		expected_shape2 = (1, 3)
+
+		v5 = v1.t()
+		v6 = v2.t()
+		self.assertTrue(v5.shape == expected_shape1)
+		self.assertTrue(v6.shape == expected_shape2)
+		self.assertTrue(v5.shape == v3.shape)
+		self.assertTrue(v6.shape == v4.shape)
+
 
 if __name__ == "__main__":
 	unittest.main()
