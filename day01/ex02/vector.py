@@ -86,7 +86,7 @@ class Vector:
 
 	def __rtruediv__(self, other):
 		""" Only scalars"""
-		raise VectorError("A scalar can't be divided by a matrix")
+		raise ValueError("A scalar can't be divided by a matrix")
 
 	def __mul__(self, other):
 		""" Only scalars"""
