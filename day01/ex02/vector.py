@@ -123,5 +123,10 @@ class Vector:
 	def dot(self, v):
 		pass
 
-	def t(self, v):
-		pass
+	def t(self):
+		if self.row_vector:
+			transposed_vec_values = [[self.values[item]] for item in range(0, len(self.values))]
+		else:
+			transposed_vec_values = [self.values[item][0] for item in range(0, len(self.values))]
+		transposed_vec = Vector(transposed_vec_values)
+		return transposed_vec
