@@ -160,6 +160,17 @@ class VectorDunderMethodsTest(unittest.TestCase):
 		self.assertTrue(v5.shape == v3.shape)
 		self.assertTrue(v6.shape == v4.shape)
 
+	def test_dot_product_method(self):
+		v1 = Vector([1.0, 2.0, 3.0])
+		v2 = Vector([4.0, 5.0, 6.0])
+		v3 = Vector([[1.0], [2.0], [3.0]])
+		v4 = Vector([[2.0], [3.0], [4.0]])
+		dot_product1 = 32
+		dot_product2 = 20
+
+		self.assertTrue(v1.dot(v2) == dot_product1)
+		self.assertTrue(v3.dot(v4) == dot_product2)
+
 
 if __name__ == "__main__":
 	unittest.main()
