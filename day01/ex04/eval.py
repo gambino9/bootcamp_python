@@ -21,9 +21,9 @@ class Evaluator:
 		return sum([enum_coefs[i][1] * len(enum_word[i][1]) for i in range(len(enum_word))])
 
 
-# if __name__ == "__main__":
-# 	words = ["Le", "Lorem", "Ipsum", "est", "simple"]
-# 	coefs = [1.0, 2.0, 1.0, 4.0, 0.5]
-#
-# 	print(Evaluator.zip_evaluate(coefs, words))
-# 	print(Evaluator.enumerate_evaluate(coefs, words))
+if __name__ == "__main__":
+	words = ["Le", "Lorem", "Ipsum", "est", "simple"]
+	coefs = [1.0, 2.0, 1.0, 4.0, 0.5]
+
+	print(Evaluator.zip_evaluate(coefs, words))
+	print(Evaluator.enumerate_evaluate(coefs, words))
