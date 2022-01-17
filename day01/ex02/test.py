@@ -37,7 +37,7 @@ class VectorConstructorTest(unittest.TestCase):
 		"""
 			Testing instance of Vector with integer as a size
 			Is shape correct
-			Is values created is correct
+			Is values created correct
 		"""
 		integer_size = 3
 		v = Vector(integer_size)
@@ -51,7 +51,7 @@ class VectorConstructorTest(unittest.TestCase):
 		"""
 			Testing instance of Vector with range
 			Is shape correct
-			Is values created is correct
+			Is values created correct
 		"""
 		vec_range = range(10, 15)
 		v = Vector(vec_range)
@@ -65,7 +65,7 @@ class VectorConstructorTest(unittest.TestCase):
 		"""
 			Testing instance of Vector with tuple as a range
 			Is shape correct
-			Is values created is correct
+			Is values created correct
 		"""
 		vec_tuple = (10, 15)
 		v = Vector(vec_tuple)
@@ -78,6 +78,12 @@ class VectorConstructorTest(unittest.TestCase):
 
 class VectorDunderMethodsTest(unittest.TestCase):
 	def test_vector_add(self):
+		"""
+			Testing __add__ dunder method with simple and nested lists
+			Is return value a Vector object
+			Is shape correct
+			Is values created correct
+		"""
 		v1 = Vector([[1.0], [2.0], [3.0]])
 		v2 = Vector([[2.0], [4.0], [8.0]])
 		v3 = Vector([1.0, 2.0, 3.0])
@@ -96,6 +102,12 @@ class VectorDunderMethodsTest(unittest.TestCase):
 		self.assertTrue(v6.values == expected2.values)
 
 	def test_vector_sub(self):
+		"""
+			Testing __sub__ dunder method with simple and nested lists
+			Is return value a Vector object
+			Is shape correct
+			Is values created correct
+		"""
 		v1 = Vector([[2.0], [4.0], [8.0]])
 		v2 = Vector([[1.0], [2.0], [3.0]])
 		v3 = Vector([2.0, 4.0, 8.0])
@@ -114,6 +126,12 @@ class VectorDunderMethodsTest(unittest.TestCase):
 		self.assertTrue(v6.values == expected2.values)
 
 	def test_vector_truediv(self):
+		"""
+			Testing __truediv__ dunder method with simple and nested lists
+			Is return value a Vector object
+			Is shape correct
+			Is values created correct
+		"""
 		v1 = Vector([12.0, 15.0, 21.0])
 		v2 = Vector([[12.0], [15.0], [21.0]])
 		scalar = 3.0
@@ -129,7 +147,23 @@ class VectorDunderMethodsTest(unittest.TestCase):
 		self.assertTrue(v4.shape == expected2.shape)
 		self.assertTrue(v4.values == expected2.values)
 
+	def test_vector_rtruediv(self):
+		"""
+			Testing __rtruediv__ dunder method with simple and nested lists
+			Does it raise a ValueError when we try to divide a scalar by a Vector object
+		"""
+		v1 = Vector([[12.0], [15.0], [21.0]])
+
+		with self.assertRaises(ValueError):
+			2 / v1
+
 	def test_vector_mult(self):
+		"""
+			Testing __mult__ dunder method with simple and nested lists
+			Is return value a Vector object
+			Is shape correct
+			Is values created correct
+		"""
 		v1 = Vector([12.0, 15.0, 21.0])
 		v2 = Vector([[12.0], [15.0], [21.0]])
 		scalar = 3.0
@@ -146,6 +180,11 @@ class VectorDunderMethodsTest(unittest.TestCase):
 		self.assertTrue(v4.values == expected2.values)
 
 	def test_transpose_method(self):
+		"""
+			Testing transpose method with simple and nested lists
+			Is shape correct
+			Is values created correct
+		"""
 		v1 = Vector([12.0, 15.0, 21.0])
 		v2 = Vector([[12.0], [15.0], [21.0]])
 		v3 = Vector([[12.0], [15.0], [21.0]])
@@ -157,10 +196,14 @@ class VectorDunderMethodsTest(unittest.TestCase):
 		v6 = v2.t()
 		self.assertTrue(v5.shape == expected_shape1)
 		self.assertTrue(v6.shape == expected_shape2)
-		self.assertTrue(v5.shape == v3.shape)
-		self.assertTrue(v6.shape == v4.shape)
+		self.assertTrue(v5.values == v3.values)
+		self.assertTrue(v6.values == v4.values)
 
 	def test_dot_product_method(self):
+		"""
+			Testing dot product method with simple and nested lists
+			Is dot product correct
+		"""
 		v1 = Vector([1.0, 2.0, 3.0])
 		v2 = Vector([4.0, 5.0, 6.0])
 		v3 = Vector([[1.0], [2.0], [3.0]])
