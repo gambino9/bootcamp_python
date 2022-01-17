@@ -121,7 +121,15 @@ class Vector:
 		return f"{str(self.__class__.__name__)}({self.values})"
 
 	def dot(self, v):
-		pass
+		if not isinstance(v, Vector):
+			raise VectorError("Vector object argument expected")
+		if self.shape != v.shape:
+			raise VectorError("The two vectors must have the same shape")
+		if self.row_vector:
+			result = sum(self.values[i] * v.values[i] for i in range(0, len(self.values)))
+		else:
+			result = sum(self.values[i][0] * v.values[i][0] for i in range(0, len(self.values)))
+		return result
 
 	def t(self):
 		if self.row_vector:
