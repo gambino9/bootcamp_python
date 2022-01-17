@@ -1,50 +1,51 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    generator.py                                       :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/11 13:47:22 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/11 14:05:31 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# generateur = (x*x for x in range(6))
-# for i in generateur:
-# 	print(i)
+# https://www.geeksforgeeks.org/python-ways-to-shuffle-a-list/
 
 import random
+
+
+def shuffle(arr):
+	n = len(arr)
+
+	# repeat the following for n number of times
+	for i in range(n):
+		# select an index randomly
+		j = random.randint(0, n - 1)
+		# delete the element at that index.
+		element = arr.pop(j)
+		# now append that deleted element to the list
+		arr.append(element)
+	return arr
+
+
 def generator(text, sep=" ", option=None):
-    try:
-        assert type(text) == str
-        assert option == None or option == 'shuffle' or option == 'unique' or option == 'ordered'
-        arr = text.split(sep)
-        if option == 'shuffle':
-            random.shuffle(arr)
-        elif option == 'unique':
-            arr = set(arr)
-        elif option == 'ordered':
-            arr.sort()
-        for word in arr:
-            yield word
-    except:
-        print("Error")
-# Tests
-text = "Le Lorem Ipsum est simplement du faux texte. test test"
-print("Generator - Option : None")
-for word in generator(text, sep=" "):
-    print(word)
-print("")
-print("Generator - Option : Shuffle")
-for word in generator(text, sep=" ", option='shuffle'):
-    print(word)
-print("")
-print("Generator - Option : Unique")
-for word in generator(text, sep=" ", option='unique'):
-    print(word)
-print("")
-print("Generator - Option : Ordered")
-for word in generator(text, sep=" ", option='ordered'):
-    print(word)
-print("")
+	opt = ['shuffle', 'unique', 'ordered', None]
+	try:
+		if option not in opt or not isinstance(text, str):
+			raise ValueError("ERROR")
+		arr = text.split(sep)
+		new_arr = arr
+		if option == 'shuffle':
+			new_arr = shuffle(arr)
+		elif option == 'unique':
+			new_arr = list(set(arr))
+		elif option == 'ordered':
+			new_arr = sorted(arr)
+		for word in new_arr:
+			yield word
+	except ValueError as ve:
+		exit(ve)
+
+
+def test_generator_function(text, option=None):
+	for word in generator(text, option=option):
+		print(word)
+
+
+if __name__ == "__main__":
+	# Tests
+	lorem_text = "Le Lorem Ipsum est simplement du faux texte."
+	test_generator_function(lorem_text)
+	# test_generator_function(lorem_text, 'shuffle')
+	# test_generator_function(lorem_text, 'unique')
+	# test_generator_function(lorem_text, 'ordered')
+
