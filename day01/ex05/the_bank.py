@@ -16,6 +16,7 @@ class Bank:
 
 	def __init__(self):
 		self.account = []
+		self.error = 0
 
 	def add(self, account):
 		try:
@@ -23,19 +24,24 @@ class Bank:
 				raise TypeError("The account to add must be an Account instance")
 			# Check if not corrupted
 			if len(account.__dict__) % 2 == 0:
+				self.error = 1
 				raise ValueError
 			if any(key.startswith('b') for key in account.__dict__.keys()):
+				self.error = 2
 				raise ValueError
 			if all([address not in account.__dict__.keys() for address in ['zip', 'addr']]):
+				self.error = 3
 				raise ValueError
 			if any([necessary not in account.__dict__.keys() for necessary in ['id', 'name']]):
+				self.error = 4
 				raise ValueError
 			self.account.append(account)
 		except TypeError as te:
 			exit(te)
 		except ValueError as ve:
-			self.fix_account(account)
-			self.account.append(account)
+			self.fix_account(account.__dict__['id'])
+			# self.account.append(account)  # TODO recursive call to add ?
+			# self.add(account)
 
 	def transfer(self, origin, dest, amount):
 		"""
@@ -71,7 +77,25 @@ class Bank:
 			@account: int(id) or str(name) of the account
 			@return True if success, False if an error occurred
 		"""
-		pass
+		id_instance = int(account - 1)
+		if self.error == 1:
+			setattr(self.account[id_instance], 'postal_code', '75000')
+			return True
+		elif self.error == 2:
+			for attribute in self.account[id_instance].keys():
+				if attribute.startswith('b'):
+					new_attr = attribute[1:]
+					setattr(self.account[id_instance], attribute, new_attr)
+			return True
+		elif self.error == 3:
+			setattr(self.account[id_instance], '198-753', zip)
+			return True
+		elif self.error == 4:
+			setattr(self.account[id_instance], 'name', 'John Doe')
+			return True
+		elif self.error == 0:
+			pass
+		return False
 
 
 class Account:
