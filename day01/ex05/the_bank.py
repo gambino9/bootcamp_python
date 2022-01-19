@@ -19,29 +19,12 @@ class Bank:
 		self.error = 0
 
 	def add(self, account):
+		self.account.append(account)
 		try:
 			if not isinstance(account, Account):
 				raise TypeError("The account to add must be an Account instance")
-			# Check if not corrupted
-			if len(account.__dict__) % 2 == 0:
-				self.error = 1
-				raise ValueError
-			if any(key.startswith('b') for key in account.__dict__.keys()):
-				self.error = 2
-				raise ValueError
-			if all([address not in account.__dict__.keys() for address in ['zip', 'addr']]):
-				self.error = 3
-				raise ValueError
-			if any([necessary not in account.__dict__.keys() for necessary in ['id', 'name']]):
-				self.error = 4
-				raise ValueError
-			self.account.append(account)
 		except TypeError as te:
 			exit(te)
-		except ValueError as ve:
-			self.fix_account(account.__dict__['id'])
-			# self.account.append(account)  # TODO recursive call to add ?
-			# self.add(account)
 
 	def transfer(self, origin, dest, amount):
 		"""
@@ -50,6 +33,8 @@ class Bank:
 			@amount: float(amount) amount to transfer
 			@return True if success, False if an error occurred
 		"""
+		if self.is_account_corrupted(origin) or self.is_account_corrupted(dest):
+			return False
 		if not isinstance(origin, (str, int)):
 			return False
 		if not isinstance(dest, (str, int)):
@@ -58,18 +43,34 @@ class Bank:
 			return False
 		if amount <= 0:
 			return False
-		# if all(person in self.account for person in [origin, dest]):
-		# 	self.account.__dict__[origin]
 		for org_profil in self.account:
 			if origin in org_profil.__dict__.values():
 				for dest_profil in self.account:
 					if dest in dest_profil.__dict__.values():
-						if org_profil['value'] > amount:  # Check if stores enough to transfer
-							org_profil['value'] -= amount
-							dest_profil['value'] += amount
+						if org_profil.value > amount:  # Check if stores enough to transfer
+							org_profil.value -= amount
+							dest_profil.value += amount
+							return True
 						else:
-							return False
-		return True
+							break
+		return False
+
+	def is_account_corrupted(self, name):
+		id_instance = None
+		if isinstance(name, str):
+			for count in self.account:
+				if name in count.name:
+					# print(f"{count.id=} for {count.name}")
+					id_instance = int(count.id - 1)
+		if len(self.account[id_instance].__dict__) % 2 == 0:
+			return True
+		if any(key.startswith('b') for key in self.account[id_instance].__dict__.keys()):
+			return True
+		if all([address not in self.account[id_instance].__dict__.keys() for address in ['zip', 'addr']]):
+			return True
+		if any([identity not in self.account[id_instance].__dict__.keys() for identity in ['id', 'name']]):
+			return True
+		return False
 
 	def fix_account(self, account):
 		"""
@@ -77,24 +78,31 @@ class Bank:
 			@account: int(id) or str(name) of the account
 			@return True if success, False if an error occurred
 		"""
-		id_instance = int(account - 1)
-		if self.error == 1:
+		id_instance = None
+		if isinstance(account, int):
+			id_instance = int(account - 1)
+		elif isinstance(account, str):
+			for count in self.account:
+				if account in count.name:
+					id_instance = int(count.id - 1)
+
+		if len(self.account[id_instance].__dict__) % 2 == 0:
 			setattr(self.account[id_instance], 'postal_code', '75000')
 			return True
-		elif self.error == 2:
-			for attribute in self.account[id_instance].keys():
+		if any(key.startswith('b') for key in self.account[id_instance].__dict__.keys()):
+			for attribute in self.account[id_instance].__dict__.keys():
 				if attribute.startswith('b'):
 					new_attr = attribute[1:]
-					setattr(self.account[id_instance], attribute, new_attr)
-			return True
-		elif self.error == 3:
+					new_value = self.account[id_instance].__dict__[attribute]
+					delattr(self.account[id_instance], attribute)
+					setattr(self.account[id_instance], new_attr, new_value)
+					return True
+		if all([address not in self.account[id_instance].__dict__.keys() for address in ['zip', 'addr']]):
 			setattr(self.account[id_instance], '198-753', zip)
 			return True
-		elif self.error == 4:
+		if any([identity not in self.account[id_instance].__dict__.keys() for identity in ['id', 'name']]):
 			setattr(self.account[id_instance], 'name', 'John Doe')
 			return True
-		elif self.error == 0:
-			pass
 		return False
 
 
@@ -106,7 +114,6 @@ class Account:
 		self.name = name
 		self.__dict__.update(kwargs)
 		Account.ID_COUNT += 1
-		# self.value = None
 
 	def transfer(self, amount):
 		self.value += amount
