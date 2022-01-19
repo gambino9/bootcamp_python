@@ -1,16 +1,3 @@
-# Has to verify each Account instance by checking :
-# If it is an instance of Account
-# Not corrupted
-# Stores enough money to complete the transfer
-
-# A corrupt bank account has :
-# An even number of attributes
-# An attribute starting with b
-# No attribute zip or addr
-# No attribute name id and value
-
-# A transaction is invalid if amount < 0 or if
-# the amount is larger than the balance of the account
 class Bank:
 	"""The bank"""
 
@@ -60,7 +47,6 @@ class Bank:
 		if isinstance(name, str):
 			for count in self.account:
 				if name in count.name:
-					# print(f"{count.id=} for {count.name}")
 					id_instance = int(count.id - 1)
 		if len(self.account[id_instance].__dict__) % 2 == 0:
 			return True
@@ -69,6 +55,8 @@ class Bank:
 		if all([address not in self.account[id_instance].__dict__.keys() for address in ['zip', 'addr']]):
 			return True
 		if any([identity not in self.account[id_instance].__dict__.keys() for identity in ['id', 'name']]):
+			return True
+		if 'value' not in self.account[id_instance].__dict__.keys():
 			return True
 		return False
 
@@ -98,11 +86,13 @@ class Bank:
 					setattr(self.account[id_instance], new_attr, new_value)
 					return True
 		if all([address not in self.account[id_instance].__dict__.keys() for address in ['zip', 'addr']]):
-			setattr(self.account[id_instance], '198-753', zip)
+			setattr(self.account[id_instance], 'zip', '123-456')
 			return True
 		if any([identity not in self.account[id_instance].__dict__.keys() for identity in ['id', 'name']]):
 			setattr(self.account[id_instance], 'name', 'John Doe')
 			return True
+		if 'value' not in self.account[id_instance].__dict__.keys():
+			setattr(self.account[id_instance], 'value', '666.0')
 		return False
 
 
