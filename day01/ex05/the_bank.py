@@ -19,6 +19,8 @@ class Bank:
 			@dest: int(id) or str(name) of the destination account
 			@amount: float(amount) amount to transfer
 			@return True if success, False if an error occurred
+
+			Returns True if transfer performed successfully, False otherwise
 		"""
 		if self.is_account_corrupted(origin) or self.is_account_corrupted(dest):
 			return False
@@ -43,6 +45,11 @@ class Bank:
 		return False
 
 	def is_account_corrupted(self, name):
+		"""
+			@name: str(name) of the account
+
+			Returns True if account corrupted, else False
+		"""
 		id_instance = None
 		if isinstance(name, str):
 			for count in self.account:
@@ -65,6 +72,8 @@ class Bank:
 			fix the corrupted account
 			@account: int(id) or str(name) of the account
 			@return True if success, False if an error occurred
+
+			Fix the account depending on the corrupt element of the account
 		"""
 		id_instance = None
 		if isinstance(account, int):
