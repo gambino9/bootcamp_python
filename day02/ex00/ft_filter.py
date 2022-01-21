@@ -1,40 +1,31 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_filter.py                                       :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/11 17:29:50 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/11 17:45:49 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# As the name suggests, filter creates a list of elements for which a function
-# returns true.
-
-def ft_filter(function_to_apply, list_of_inputs):
+def ft_filter(function_to_apply, iterable):
+	"""
+		Filter the result of function apply to all elements of the iterable.
+		Args:
+		function_to_apply: a function taking an iterable.
+		iterable: an iterable object (list, tuple, iterator).
+		Returns:
+		An iterable.
+		None if the iterable can not be used by the function.
+	"""
 	try:
-		if not list_of_inputs:
-			raise TypeError("ft_map should at least have two parameters")
 		if not callable(function_to_apply):
 			raise TypeError("First parameter is not a function")
+
+		for i in iterable:
+			if function_to_apply(i):
+				yield i
 	except TypeError as e:
-		print(e)
-		exit()
-	result = []
-	for i in list_of_inputs:
-		if function_to_apply(i) == True:
-			result.append(i)
-	return (result)
+		exit(e)
 
-print("----Test Map with a tuple of numbers----")
-def CheckNumbers(n):
-	if n % 2:
-		return True
-	else:
-		return False
 
-numbers = (1, 2, 3, 4)
-result = ft_filter(CheckNumbers, numbers)
-print(result)
+if __name__ == "__main__":
+	x = [1, 2, 3, 4, 5]
+
+	print(ft_filter(lambda dum: not (dum % 2), 9))
+	# Output:
+	# < generator object ft_filter at 0x7f709c777d00 >  # The adress will be different
+
+	print(list(ft_filter(lambda dum: not (dum % 2), x)))
+	# Output:
+	# [2, 4]
