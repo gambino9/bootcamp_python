@@ -1,24 +1,29 @@
-# Reduce is a really useful function for performing some computation on a list
-# and returning the result. It applies a rolling computation to sequential pairs
-# of values in a list. For example, if you wanted to compute the product of a 
-# list of integers.
-
-def ft_reduce(function_to_apply, list_of_inputs):
+def ft_reduce(function_to_apply, iterable):
+	"""
+		Apply function of two arguments cumulatively.
+		Args:
+		function_to_apply: a function taking an iterable.
+		iterable: an iterable object (list, tuple, iterator).
+		Returns:
+		A value, of same type of elements in the iterable parameter.
+		None if the iterable can not be used by the function.
+	"""
 	try:
-		assert callable(function_to_apply)
-		assert list_of_inputs != None
-		iter(list_of_inputs)
-		list_len = len(list_of_inputs)
-		res = list_of_inputs[0]
+		if not callable(function_to_apply):
+			raise TypeError("First parameter is not a function")
+		iter(iterable)
+		list_len = len(iterable)
+		res = iterable[0]
 		for i in range(1, list_len):
-			res = function_to_apply(res, list_of_inputs[i])
+			res = function_to_apply(res, iterable[i])
 		return res
-	except:
-		print("Error")
-		
-print("----Test Map with a tuple of numbers----")
-def prout(nb1, nb2):
-	return nb1 + nb2
-numbers = (1, 2, 3, 4)
-result = ft_reduce(prout, numbers)
-print(result)
+	except TypeError as e:
+		exit(e)
+
+
+if __name__ == "__main__":
+	# Example3:
+	lst = ['H', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+	print(ft_reduce(lambda u, v: u + v, lst))
+	# Output:
+	# "Hello world"
