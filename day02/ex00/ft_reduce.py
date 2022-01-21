@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_reduce.py                                       :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/11 17:42:30 by lboukrou          #+#    #+#              #
-#    Updated: 2020/03/11 18:10:53 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # Reduce is a really useful function for performing some computation on a list
 # and returning the result. It applies a rolling computation to sequential pairs
 # of values in a list. For example, if you wanted to compute the product of a 
