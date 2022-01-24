@@ -10,7 +10,7 @@ def log(func):
 		end = time.time()
 		exec_time = end - start
 		with open('machine.log', 'a') as file:
-			content = f"({os.environ['USER']})Running : {str(func.__name__).capitalize():15}" \
+			content = f"({os.environ['USER']})Running : {str(func.__name__).capitalize():19}" \
 						f"[ exec-time = {exec_time:.4f} {'s' if exec_time > 1 else 'ms'}]\n"
 			file.write(content)
 			file.close()
