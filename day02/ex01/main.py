@@ -9,8 +9,6 @@
 # attribute. The function assigns the value to the attribute, provided
 # the object allows it.
 
-# https://realpython.com/python-kwargs-and-args/
-
 def what_are_the_vars(*args, **kwargs):
 	"""
 		fix the corrupted account
@@ -18,20 +16,29 @@ def what_are_the_vars(*args, **kwargs):
 		@param kwargs:
 
 		@return: an instance of class ObjectC
+				None if an attribute we try to set already exists
 	"""
+	# obj = ObjectC()
+	# for i, item in enumerate(args):
+	# 	setattr(obj, f"var_{i}", item)
+	# # obj.__dict__.
+	# for key, value in kwargs.items():
+	# 	if hasattr(obj, key):
+	# 		return None
+	# 	setattr(obj, key, value)
+	# return obj
 	obj = ObjectC()
 	ind = 0
-	for i in args:
-		setattr(obj, "var_" + str(ind), i)
+	tmp = None
+	for i in args:  # args
+		setattr(obj, f"var_{ind}", str(i))
 		ind += 1
-	for k, v in kwargs.items():
-		try:
-			getattr(obj, k)
-		except:
-			setattr(obj, k, v)
-		else:
-			return (None)
-	return (obj)
+	for k, v in kwargs.items():  # kwargs
+		if hasattr(obj, k):
+			setattr(obj, f"var_{ind - 1}", str(tmp))
+			return None
+		setattr(obj, k, v)
+	return obj
 
 
 class ObjectC(object):
@@ -47,12 +54,14 @@ def doom_printer(obj):
 	for attr in dir(obj):
 		if attr[0] != '_':
 			value = getattr(obj, attr)
-			print("{}: {}".format(attr, value))
+			print(f"{attr}: {value}")
 	print("end")
 
 
 if __name__ == "__main__":
 	obj = what_are_the_vars(7)
+	doom_printer(obj)
+	obj = what_are_the_vars(None, [])
 	doom_printer(obj)
 	obj = what_are_the_vars("ft_lol", "Hi")
 	doom_printer(obj)
@@ -61,4 +70,6 @@ if __name__ == "__main__":
 	obj = what_are_the_vars(12, "Yes", [0, 0, 0], a=10, hello="world")
 	doom_printer(obj)
 	obj = what_are_the_vars(42, a=10, var_0="world")
+	doom_printer(obj)
+	obj = what_are_the_vars(42, "Yes", a=10, var_2="world")
 	doom_printer(obj)
