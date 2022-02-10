@@ -2,6 +2,7 @@
 # https://zestedesavoir.com/tutoriels/954/notions-de-python-avancees/3-further/2-context-managers/
 import pathlib
 import csv
+import sys
 
 
 class CsvReader:
@@ -19,7 +20,12 @@ class CsvReader:
 
 	def __enter__(self):
 		self.file_path = pathlib.Path(self.filename)
-		self.file = open(self.file_path)
+
+		try:
+			self.file = open(self.file_path)
+		except FileNotFoundError as e:
+			sys.exit(e)
+
 		reader = csv.reader(self.file)
 
 		if self.header:
@@ -65,7 +71,7 @@ class CsvReader:
 
 
 if __name__ == "__main__":
-	with CsvReader('good.csv', skip_top=18, skip_bottom=0) as file:
+	with CsvReader('god.csv', skip_top=18, skip_bottom=0) as file:
 		if file is None:
 			print("File is corrupted or missing")
 		else:
