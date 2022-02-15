@@ -1,3 +1,5 @@
+import sys
+
 def ft_filter(function_to_apply, iterable):
 	"""
 		Filter the result of function apply to all elements of the iterable.
@@ -16,7 +18,7 @@ def ft_filter(function_to_apply, iterable):
 			if function_to_apply(i):
 				yield i
 	except TypeError as e:
-		exit(e)
+		sys.exit(e)
 
 
 if __name__ == "__main__":
@@ -24,7 +26,7 @@ if __name__ == "__main__":
 
 	print(ft_filter(lambda dum: not (dum % 2), 9))
 	# Output:
-	# < generator object ft_filter at 0x7f709c777d00 >  # The adress will be different
+	# < generator object ft_filter at 0x7f709c777d00 >  # The address will be different
 
 	print(list(ft_filter(lambda dum: not (dum % 2), x)))
 	# Output:

@@ -1,3 +1,6 @@
+import sys
+
+
 def ft_reduce(function_to_apply, iterable):
 	"""
 		Apply function of two arguments cumulatively.
@@ -18,7 +21,7 @@ def ft_reduce(function_to_apply, iterable):
 			res = function_to_apply(res, iterable[i])
 		return res
 	except TypeError as e:
-		exit(e)
+		sys.exit(e)
 
 
 if __name__ == "__main__":
