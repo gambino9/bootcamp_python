@@ -18,15 +18,6 @@ def what_are_the_vars(*args, **kwargs):
 		@return: an instance of class ObjectC
 				None if an attribute we try to set already exists
 	"""
-	# obj = ObjectC()
-	# for i, item in enumerate(args):
-	# 	setattr(obj, f"var_{i}", item)
-	# # obj.__dict__.
-	# for key, value in kwargs.items():
-	# 	if hasattr(obj, key):
-	# 		return None
-	# 	setattr(obj, key, value)
-	# return obj
 	obj = ObjectC()
 	ind = 0
 	tmp = None
