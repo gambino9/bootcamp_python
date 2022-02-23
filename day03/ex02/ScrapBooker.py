@@ -16,42 +16,91 @@ class ScrapBooker:
 		pass
 
 	def crop(self, array, dim, position=(0, 0)):
-		""" crop the image as a rectangle with the given dimensions
-		(meaning, the new height and width for the image), whose top left
-		corner is given by the position argument.
-		The position should be (0,0) by default. You have to consider it an
-		error (and handle said error) if dimensions is larger than the current
-		image size."""
-		try:
-			if not all(isinstance(arg, tuple) for arg in [dim, position]):
-				raise TypeError("Dimensions and position must be tuples")
-			if any(i < 0 for i in dim) or any(j < 0 for j in position):
-				raise TypeError("Dimensions and position must not be negative numbers")
-			if not all(x > y for x, y in zip(array.shape, dim)):
-				raise TypeError("Dimensions must be inferior to array's dimensions")
-			row = dim[0]
-			column = dim[1]
-			arr = np.array(array)
-			new_array = arr[position[0]:(position[0] + row), position[1]:(position[1] + column)]
-			return new_array
-		except TypeError as e:
-			sys.exit(e)
+		"""
+		Crops the image as a rectangle via dim arguments (being the new height
+		and width of the image) from the coordinates given by position arguments.
+		Args:
+		array: numpy.ndarray
+		dim: tuple of 2 integers.
+		position: tuple of 2 integers.
+		Returns:
+		new_arr: the cropped numpy.ndarray.
+		None otherwise (combination of parameters not incompatible).
+		Raises:
+		This function should not raise any Exception.
+		"""
+		if not isinstance(array, np.ndarray):
+			return None
+		if not all(isinstance(arg, tuple) for arg in [dim, position]):
+			return None
+		if any(i < 0 for i in dim) or any(j < 0 for j in position):
+			return None
+		if len(dim) != 2 or len(position) != 2:
+			return None
+		if not all(x > y for x, y in zip(array.shape, dim)):
+			return None
+		row = dim[0]
+		column = dim[1]
+		arr = np.array(array)
+		new_array = arr[position[0]:(position[0] + row), position[1]:(position[1] + column)]
+		return new_array
 
-	def thin(self, array, n, axis):  # TODO : Seems to work, gotta check though
-		""" delete every n-th pixel row along the specified axis
-		(0 vertical, 1 horizontal)."""
+	def thin(self, array, n, axis):
+		"""
+		Deletes every n-th line pixels along the specified axis (0: vertical, 1: horizontal)
+		Args:
+		array: numpy.ndarray.
+		n: non-null positive integer lower than the number of row/column of the array
+		(depending on axis value).
+		axis: positive non-null integer.
+		Returns:
+		new_arr: thinned numpy.ndarray.
+		None otherwise (combination of parameters not incompatible).
+		Raises:
+		This function should not raise any Exception.
+		"""
+		if not isinstance(array, np.ndarray):
+			return None
+		if n < 0 or not (0 <= axis <= 1):
+			return None
 		axis = 1 - axis
 		arr = np.delete(array, np.s_[n-1::n], axis)
 		return arr
 
-	def juxtapose(self, array, n, axis):  # TODO : This one gotta be checked, does not work properly
-		""" juxtapose n copies of the image along the specified axis
-		(0 vertical, 1 horizontal)"""
-		axis = 1 - axis
+	def juxtapose(self, array, n, axis):
+		"""
+		Juxtaposes n copies of the image along the specified axis.
+		Args:
+		array: numpy.ndarray.
+		n: positive non-null integer.
+		axis: integer of value 0 or 1.
+		Returns:
+		new_arr: juxtaposed numpy.ndarray.
+		None otherwise (combination of parameters not incompatible).
+		Raises:
+		This function should not raise any Exception.
+		"""
+		if not isinstance(array, np.ndarray):
+			return None
+		if n < 0 or not (0 <= axis <= 1):
+			return None
 		return np.concatenate([array] * n, axis)
 
 	def mosaic(self, array, dim):
-		""" make a grid with multiple copies of the array.
-		The dimensions argument specifies the dimensions (meaning
-		the height and width) of the grid (e.g. 2x3)."""
+		"""
+		Makes a grid with multiple copies of the array. The dim argument
+		specifies the number of repetition along each dimensions.
+		Args:
+		array: numpy.ndarray.
+		dim: tuple of 2 integers.
+		Returns:
+		new_arr: mosaic numpy.ndarray.
+		None otherwise (combination of parameters not incompatible).
+		Raises:
+		This function should not raise any Exception.
+		"""
+		if not isinstance(array, np.ndarray):
+			return None
+		if len(dim) != 2 or any(i < 0 for i in dim):
+			return None
 		return np.tile(array, dim)
