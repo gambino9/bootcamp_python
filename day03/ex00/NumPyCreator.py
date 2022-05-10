@@ -8,7 +8,7 @@ class NumPyCreator:
     def from_list(self, lst):
         if isinstance(lst, list):
             if any(isinstance(i, list) for i in lst) and all(len(i) == len(lst[0]) for i in lst):
-                return np.array(lst, dtype=object)
+                return np.array(lst)
             elif not any(isinstance(i, list) for i in lst):
                 return np.array(lst)
         return None
