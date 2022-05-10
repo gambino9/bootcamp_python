@@ -1,6 +1,7 @@
 from NumPyCreator import NumPyCreator
 
 npc = NumPyCreator()
+print(npc.from_list([1, 2, 3, 6, 3, 4]))  # My test
 print(npc.from_list([[1, 2, 3], [6, 3, 4]]))
 # Output:
 # array([[1, 2, 3],
@@ -22,6 +23,7 @@ print(npc.from_list(((1, 2), (3, 4))))
 # None
 
 print(npc.from_tuple(("a", "b", "c")))
+print(npc.from_tuple((("a", "b", "c"), ("d", "e", "f"))))  # my test
 # Output
 # array(['a','b','c'])
 
@@ -53,12 +55,6 @@ print(npc.identity(4))
 # 	   [0., 0., 1., 0.],
 # 	   [0., 0., 0., 1.]])
 
-print(npc.from_list([[], []]))
-print(npc.from_list([[], []]).shape)
-print(npc.from_list([[], []]).dtype)
-# Output
-# array([], shape=(2, 0), dtype=float64)
-
 print('#############################################################################')
 
 print(npc.from_list([[], []]))
@@ -75,22 +71,22 @@ print(npc.from_list([[1,2,3],[6,3,4],[8,5,6]]))
 # 	   [6, 3, 4],
 # 	   [8, 5, 6]])
 
-print(npc.from_tuple(("a","b","c")))
-print(npc.from_tuple(("a","b","c")).dtype)
+print(npc.from_tuple(("a", "b", "c")))
+print(npc.from_tuple(("a", "b", "c")).dtype)
 
-# Shoud Output:
+# Should Output:
 # array(['a', 'b', 'c'], dtype='<U1')
 
 print(npc.from_iterable(range(5)))
 
-# Shoud Output:
+# Should Output:
 # array([0, 1, 2, 3, 4])
 
 print(npc.from_shape((0, 0)))
 print(npc.from_shape((0, 0)).shape)
 print(npc.from_shape((0, 0)).dtype)
 
-# Shoud Output:
+# Should Output:
 # array([], shape=(0, 0), dtype=float64)
 
 print(npc.from_shape((3, 5)))
