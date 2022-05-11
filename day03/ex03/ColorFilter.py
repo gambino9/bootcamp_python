@@ -6,7 +6,7 @@ import numpy as np
 class ColorFilter:
 	def __init__(self):
 		pass
-	
+
 	def invert(self, array):
 		"""
 		Inverts the color of the image received as a numpy array.
@@ -90,7 +90,7 @@ class ColorFilter:
 		This function should not raise any Exception.
 		"""
 
-	def to_grayscale(array, filter, **kwargs):
+	def to_grayscale(self, array, filter, **kwargs):
 		"""
 		Applies a grayscale filter to the image received as a numpy array.
 		For filter = ’mean’/’m’: performs the mean of RBG channels.
@@ -106,3 +106,24 @@ class ColorFilter:
 		Raises:
 		This function should not raise any Exception.
 		"""
+		#if not all(isinstance(x, float) for x in kwargs.keys()):
+		#	print("hello")
+		#	return None
+		if filter not in ['m', 'mean', 'w', 'weight']:
+			return None
+
+		#if filter in ["w", "weight"]:
+		#	grey = np.dot(array[...,:3], [*kwargs]).astype(np.uint8)
+		#else:
+		#	grey = np.dot(array[...,:3], [array[:, :, ]]).astype(np.uint8)
+		if filter in ['mean', 'm']:
+			for color_array in array:
+				for rgb in color_array:
+					rgb[..., :3] = np.mean(rgb[..., :3])
+			return array
+		elif filter in ['weighted', 'w']:
+			for color_array in array:
+				for rgb in color_array:
+					rgb[..., :3] = np.dot(rgb[..., :3], kwargs.get('weight'))
+			return array
+		#return grey
