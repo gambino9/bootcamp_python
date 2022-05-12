@@ -13,8 +13,6 @@ for f in [cf.to_red, cf.to_green, cf.to_blue, cf.invert]:
     plt.imshow(f(array))
     plt.show()
 
-#array = plt.imread(path_image)
-
 im = cf.to_grayscale(array, "m")
 plt.imshow(im, cmap="gray")
 plt.show()
