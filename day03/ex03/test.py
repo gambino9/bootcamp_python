@@ -6,7 +6,7 @@ from ColorFilter import ColorFilter
 
 cf = ColorFilter()
 
-path_image = "/home/lamia/bootcamp_python/day03/elon_canaGAN.png"
+path_image = "../elon_canaGAN.png"
 
 for f in [cf.to_red, cf.to_green, cf.to_blue, cf.invert]:
     array = plt.imread(path_image)
