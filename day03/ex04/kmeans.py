@@ -1,12 +1,10 @@
-import numpy as np
 from collections import Counter
-import pandas
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from arg_parse import arguments_parser
 
-
+# The command to launch in terminal is :
+# python3 kmeans.py --f ../solar_system_census.csv --m 20 -n 4
 class KmeansClustering:
 	def __init__(self, max_iter=20, ncentroid=4):
 		# ... parameters control...
@@ -14,8 +12,8 @@ class KmeansClustering:
 		self.max_iter = max_iter  # number of max iterations to update the centroids
 		self.centroids = []
 
-		path_to_csv = "/home/lamia/bootcamp_python/day03/solar_system_census.csv"
-		dataset = pd.read_csv(path_to_csv)
+		#path_to_csv = "../solar_system_census.csv"
+		#dataset = pd.read_csv(path_to_csv)
 
 		self.kmeans_model = KMeans(n_clusters=self.ncentroid, max_iter=self.max_iter)
 
@@ -81,7 +79,7 @@ if __name__ == "__main__":
 	max_iter = arguments_parser().max_iter
 	n_centroids = arguments_parser().n_centroid
 
-	df = pandas.read_csv(path_csv)
+	df = pd.read_csv(path_csv)
 	df.drop(columns=df.columns[0], axis=1, inplace=True)
 
 	km = KmeansClustering(max_iter, ncentroid=n_centroids)
