@@ -1,20 +1,10 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    FileLoader.py                                      :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/04/24 17:37:39 by lamia             #+#    #+#              #
-#    Updated: 2020/06/21 18:03:29 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # https://www.geeksforgeeks.org/python-pandas-df-size-df-shape-and-df-ndim/
 
+import pandas
 import pandas as pd
 
-class FileLoader():
+
+class FileLoader:
     def __init__(self):
         pass
     
@@ -25,13 +15,18 @@ class FileLoader():
         dataset (e.g. 340 x 500). The method returns the dataset loaded
         as a pandas.DataFrame.
         """
-        data = pd.read_csv(path)
-        # Here we get the dimensions of the csv under form of a tuple
-        df_ndim = data.shape
-        print("Loading dataset of dimensions {} x {}".format(df_ndim[0], df_ndim[1]))
-        return (data)
+        try:
+            data = pd.read_csv(path)
+            # Here we get the dimensions of the csv under form of a tuple
+            df_ndim = data.shape
+            print("Loading dataset of dimensions {} x {}".format(df_ndim[0], df_ndim[1]))
+            return data
+        except FileNotFoundError:
+            return None
 
     def display(self, df, n):
+        if not isinstance(n, int) or not isinstance(df, pandas.DataFrame):
+            return None
         df = df
         if n > 0:
             print(df.head(n))
