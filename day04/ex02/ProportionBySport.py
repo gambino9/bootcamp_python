@@ -1,18 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ProportionBySport.py                               :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lboukrou <lboukrou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/06/24 18:23:15 by lboukrou          #+#    #+#              #
-#    Updated: 2020/06/27 19:06:37 by lboukrou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # https://www.geeksforgeeks.org/python-pandas-dataframe-drop_duplicates/
 
-from FileLoader import FileLoader
 import pandas as pd
 
 
@@ -25,18 +12,21 @@ def ProportionBySport(df, olympic_year, olympic_sport, specific_gender):
 	percentage of female basketball players amongall the female participants
 	of the 2016 Olympics?”
 	"""
+	if not isinstance(df, pd.DataFrame):
+		return None
+	if not isinstance(olympic_year, int):
+		return None
+	if not isinstance(olympic_sport, str) or not (isinstance(specific_gender, str)):
+		return None
 	year = olympic_year
 	sport = olympic_sport
 	gender = specific_gender
 	# number of athletes during one year
 	data_year = df[df.Year == year]
-	# number of atheletes of specific gender in that specific year
-	data_global_gender = data_year[data_year.Sex == gender]
-	# removing duplicate athletes
-	data_global_gender = data_global_gender.drop_duplicates("Name", keep='first', inplace=False)
-	# number of a specific sport's athletes of specific gender 
-	data_sport = data_global_gender[data_global_gender.Sport == sport]
+	# number of athletes of specific gender in that specific year
+	data_year_gender = data_year[data_year.Sex == gender]
+	# number of a specific sport's athletes of specific gender
+	data_year_gender_sport = data_year_gender[data_year_gender.Sport == sport]
 	# dimensions of the dataframes
-	d = data_global_gender.shape
-	df_ndim = data_sport.shape
-	return((df_ndim[0] * 100) / d[0])
+	d = data_year_gender_sport.shape
+	return d[0] / data_year_gender.shape[0]
