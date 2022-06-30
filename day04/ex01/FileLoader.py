@@ -1,6 +1,5 @@
 # https://www.geeksforgeeks.org/python-pandas-df-size-df-shape-and-df-ndim/
 
-import pandas
 import pandas as pd
 
 
@@ -25,7 +24,7 @@ class FileLoader:
             return None
 
     def display(self, df, n):
-        if not isinstance(n, int) or not isinstance(df, pandas.DataFrame):
+        if not isinstance(n, int) or not isinstance(df, pd.DataFrame):
             return None
         df = df
         if n > 0:
