@@ -8,7 +8,7 @@ def youngest_fellah(df, year):
     The function returns a dictionary containing the age of the youngest
     woman and man who took part in the Olympics on that year.
     """
-    if not isinstance(df, pd.DataFrame) or not isinstance(year, str):
+    if not isinstance(df, pd.DataFrame) or not isinstance(year, int):
         return None
     data_year = df[df.Year == year]
     data_fem = data_year[data_year.Sex == 'F']
